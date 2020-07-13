@@ -67,8 +67,7 @@ dns:
       - 240.0.0.0/4
 {% endif %}
 
-experimental:
-  interface-name: en0 # your interface-name
+interface-name: en0
 
 tun:
   stack: system
@@ -125,12 +124,13 @@ cfw-latency-timeout: 5000
 
 #-------------------#
 
-Proxy: {{ getClashNodes(nodeList) | json }}
+proxies: {{ getClashNodes(nodeList) | json }}
 
-Proxy Group:
+proxy-groups:
 - type: url-test
   name: 🚀 自动选择
-  proxies: DIRECT, 🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US
+  proxies: [DIRECT, 🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US]
+  url: {{ proxyTestUrl }}
   interval: 60
 - type: url-test
   name: 🇺🇸 US
@@ -167,12 +167,14 @@ Proxy Group:
   proxies:
     - DIRECT
     - 🚀 自动选择
-- type: select
+- type: url-test
   name: 🎬 Netflix
   proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 1200
 
-Rule:
-{{ my_rules.main('🚀 自动选择') | clash }}
+rules:
+{{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
 {{ apple_rules.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash }}
 {{ remoteSnippets.netflix.main('🎬 Netflix') | clash }}
 {{ remoteSnippets.hbo.main('🚀 自动选择') | clash }}

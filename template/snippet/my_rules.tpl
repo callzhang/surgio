@@ -1,4 +1,4 @@
-{% macro main(rule) %}
+{% macro main(rule, US_node) %}
 
 # Derek's Rules
 DOMAIN-KEYWORD,slack,{{ rule }}
@@ -27,7 +27,7 @@ DOMAIN-SUFFIX,slack-edge.com,{{ rule }}
 DOMAIN-SUFFIX,海豚湾.com,{{ rule }}
 DOMAIN-SUFFIX,onetravel.com,{{ rule }}
 DOMAIN-SUFFIX,githubusercontent.com,{{ rule }}
-
+DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 
 DOMAIN-SUFFIX,asus.com, DIRECT
 DOMAIN-SUFFIX,acl4ssr,DIRECT

@@ -9,6 +9,7 @@
     "node": "^10"
   },
   "dependencies": {
-    "surgio": "1.24.3"
+    "@surgio/gateway": "^0.7.0",
+    "surgio": "^2.0.0"
   }
 }

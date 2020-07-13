@@ -75,7 +75,7 @@ module.exports = {
     {
       name: 'stardust.yaml',
       template: 'clash',
-      provider: 'SSRCloud',
+      provider: 'SSRCloud_ss',
       combineProviders: ['stardust'],
       customParams: {
         dns: true,
@@ -184,5 +184,10 @@ module.exports = {
   },
   // 非常有限的报错信息收集
   analytics: true,
+  // 接口鉴权
+  gateway: {
+    auth: true,
+    accessToken: 'YOUR_PASSWORD',
+  },
 };
 
