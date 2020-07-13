@@ -180,7 +180,7 @@ rules:
 {{ remoteSnippets.hbo.main('🚀 自动选择') | clash }}
 {{ remoteSnippets.hulu.main('🚀 自动选择') | clash }}
 {{ youtube_rules.main('🚀 自动选择') | clash }}
-{{ us_rules.main('US') | clash }}
+{{ us_rules.main('🇺🇸 US') | clash }}
 {{ remoteSnippets.telegram.main('🚀 自动选择') | clash }}
 {{ blocked_rules.main('🚀 自动选择') | clash }}
 {{ direct_rules.main('DIRECT') | clash }}

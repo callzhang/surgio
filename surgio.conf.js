@@ -81,33 +81,33 @@ module.exports = {
         dns: true,
       }
     },
-    {
-      name: 'stardust-ssr.yaml',
-      template: 'clash',
-      provider: 'SSRCloud',
-      combineProviders: ['hitun', 'stardust'],
-      customParams: {
-        dns: true,
-      }
-    },
-    {
-      name: 'Clash_hitun.yaml',
-      template: 'clash',
-      provider: 'hitun',
-      //combineProviders: ['hitun', 'stardust'],
-      customParams: {
-        dns: true,
-      }
-    },
-    {
-      name: 'Clash_stardust.yaml',
-      template: 'clash',
-      provider: 'stardust',
-      //combineProviders: ['hitun', 'stardust'],
-      customParams: {
-        dns: true,
-      }
-    },
+    // {
+    //   name: 'stardust-ssr.yaml',
+    //   template: 'clash',
+    //   provider: 'SSRCloud',
+    //   combineProviders: ['hitun', 'stardust'],
+    //   customParams: {
+    //     dns: true,
+    //   }
+    // },
+    // {
+    //   name: 'Clash_hitun.yaml',
+    //   template: 'clash',
+    //   provider: 'hitun',
+    //   //combineProviders: ['hitun', 'stardust'],
+    //   customParams: {
+    //     dns: true,
+    //   }
+    // },
+    // {
+    //   name: 'Clash_stardust.yaml',
+    //   template: 'clash',
+    //   provider: 'stardust',
+    //   //combineProviders: ['hitun', 'stardust'],
+    //   customParams: {
+    //     dns: true,
+    //   }
+    // },
 
     /**
      * Quantumult
@@ -163,7 +163,7 @@ module.exports = {
    * 订阅地址的前缀部分，以 / 结尾
    * 例如阿里云 OSS 的访问地址 https://xxx.oss-cn-hangzhou.aliyuncs.com/
    */
-  urlBase: 'https://example.com/',
+  urlBase: 'https://surgio-sandy.vercel.app/get-artifact/',
   surgeConfig: {
     v2ray: 'native',
   },
@@ -174,20 +174,20 @@ module.exports = {
   },
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /
-    prefix: '/',
-    bucket: 'surgio-store',
+    prefix: '/科学上网/',
+    bucket: 'stardust-public',
     // 支持所有区域
     region: 'oss-cn-hangzhou',
     // 以下信息于阿里云控制台获得
-    accessKeyId: 'YOUR_ACCESS_KEY_ID',
-    accessKeySecret: 'YOUR_ACCESS_KEY_SECRET',
+    accessKeyId: 'LTAIqeJAXS20WLqx',
+    accessKeySecret: 'dRlDUEdcWmFnsf4RkBoBujj2tIGyno',
   },
   // 非常有限的报错信息收集
   analytics: true,
   // 接口鉴权
   gateway: {
     auth: true,
-    accessToken: 'YOUR_PASSWORD',
+    accessToken: 'stardust2017',
   },
 };
 

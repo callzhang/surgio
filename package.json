@@ -6,10 +6,10 @@
     "update": "surgio generate && surgio upload"
   },
   "engines": {
-    "node": "^10"
+    "node": ">=12"
   },
   "dependencies": {
-    "@surgio/gateway": "^0.7.0",
+    "@surgio/gateway": "^1.0.4",
     "surgio": "^2.0.0"
   }
 }
