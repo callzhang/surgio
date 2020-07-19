@@ -1,8 +1,9 @@
 'use strict';
 
 const { utils } = require('surgio');
-const SSRCloud = require('./provider/SSRCloud');
-const SSRCloud_ss = require('./provider/SSRCloud_ss');
+const SSRCloud1 = require('./provider/SSRCloud1');//Derek
+const SSRCloud2 = require('./provider/SSRCloud2');//Jia
+const SSRCloud3 = require('./provider/SSRCloud3');//Jia
 
 /**
  * 使用文档：https://surgio.royli.dev/
@@ -59,8 +60,8 @@ module.exports = {
     {
       name: 'SurgeV3_combine.conf',
       template: 'surge_v3',
-      provider: 'SSRCloud_ss',
-      combineProviders: ['hitun', 'stardust'],
+      provider: 'SSRCloud1',
+      combineProviders: ['SSRCloud2', 'SSRCloud3', 'stardust'],
     },
     // // Surge + SSR
     // {
@@ -75,30 +76,13 @@ module.exports = {
     {
       name: 'stardust.yaml',
       template: 'clash',
-      provider: 'SSRCloud_ss',
-      combineProviders: ['stardust'],
+      provider: 'SSRCloud1',
+      combineProviders: ['SSRCloud2', 'SSRCloud3', 'stardust'],
       customParams: {
         dns: true,
       }
     },
-    // {
-    //   name: 'stardust-ssr.yaml',
-    //   template: 'clash',
-    //   provider: 'SSRCloud',
-    //   combineProviders: ['hitun', 'stardust'],
-    //   customParams: {
-    //     dns: true,
-    //   }
-    // },
-    // {
-    //   name: 'Clash_hitun.yaml',
-    //   template: 'clash',
-    //   provider: 'hitun',
-    //   //combineProviders: ['hitun', 'stardust'],
-    //   customParams: {
-    //     dns: true,
-    //   }
-    // },
+    
     // {
     //   name: 'Clash_stardust.yaml',
     //   template: 'clash',
