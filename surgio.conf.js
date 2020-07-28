@@ -61,7 +61,7 @@ module.exports = {
       name: 'SurgeV3_combine.conf',
       template: 'surge_v3',
       provider: 'SSRCloud1',
-      combineProviders: ['SSRCloud2', 'SSRCloud3', 'stardust'],
+      combineProviders: ['SSRCloud2', 'hitun', 'stardust'],
     },
     // // Surge + SSR
     // {
@@ -77,7 +77,7 @@ module.exports = {
       name: 'stardust.yaml',
       template: 'clash',
       provider: 'SSRCloud1',
-      combineProviders: ['SSRCloud2', 'SSRCloud3', 'stardust'],
+      combineProviders: ['SSRCloud2', 'hitun', 'stardust'],
       customParams: {
         dns: true,
       }
