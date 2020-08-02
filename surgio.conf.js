@@ -83,15 +83,14 @@ module.exports = {
       }
     },
     
-    // {
-    //   name: 'Clash_stardust.yaml',
-    //   template: 'clash',
-    //   provider: 'stardust',
-    //   //combineProviders: ['hitun', 'stardust'],
-    //   customParams: {
-    //     dns: true,
-    //   }
-    // },
+    {
+      name: 'stardust_only.yaml',
+      template: 'clash',
+      provider: 'stardust',
+      customParams: {
+        dns: true,
+      }
+    },
 
     /**
      * Quantumult
