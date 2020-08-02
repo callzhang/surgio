@@ -48,15 +48,13 @@ dns:
   enable: true # set true to enable dns (default is false)
   ipv6: true # default is false
   listen: 0.0.0.0:53
-  # default-nameserver: # resolve dns nameserver host, should fill pure IP
-  #   - 114.114.114.114
-  #   - 8.8.8.8
   enhanced-mode: redir-host
   nameserver:
     - 114.114.114.114
     - tls://dns.rubyfish.cn:853 # dns over tls
     - https://1.1.1.1/dns-query # dns over https
   fallback: # concurrent request with nameserver, fallback used when GEOIP country isn't CN
+    - 8.8.8.8
     - tcp://1.1.1.1
     - tls://13800000000.rubyfish.cn:853
     - tls://1.0.0.1:853
@@ -67,7 +65,7 @@ dns:
       - 240.0.0.0/4
 {% endif %}
 
-interface-name: en0
+# interface-name: en0 #windows不兼容
 
 tun:
   stack: system
@@ -136,32 +134,32 @@ proxy-groups:
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 36000
 - type: url-test
   name: 🇭🇰 HK
   proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 3600 #香港频率高一些
 - type: url-test
   name: 🇸🇬 SG
   proxies: {{ getClashNodeNames(nodeList, singaporeFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 36000
 - type: url-test
   name: 🇯🇵 JP
   proxies: {{ getClashNodeNames(nodeList, japanFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 36000
 - type: url-test
   name: 🇰🇷 KR
   proxies: {{ getClashNodeNames(nodeList, koreaFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 36000
 - type: url-test
   name: 🇨🇳 TW
   proxies: {{ getClashNodeNames(nodeList, taiwanFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 36000
 - type: select
   name: 🍎 Apple
   proxies:
@@ -171,7 +169,7 @@ proxy-groups:
   name: 🎬 Netflix
   proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 1200
+  interval: 36000
 
 rules:
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
