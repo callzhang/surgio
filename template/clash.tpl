@@ -1,4 +1,3 @@
-
 {% import './snippet/my_rules.tpl' as my_rules %}
 {% import './snippet/direct_rules.tpl' as direct_rules %}
 {% import './snippet/apple_rules.tpl' as apple_rules %}
@@ -127,7 +126,7 @@ proxies: {{ getClashNodes(nodeList) | json }}
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择
-  proxies: [DIRECT, 🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US]
+  proxies: [DIRECT, 🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
   url: {{ proxyTestUrl }}
   interval: 60
 - type: url-test
@@ -158,6 +157,26 @@ proxy-groups:
 - type: url-test
   name: 🇨🇳 TW
   proxies: {{ getClashNodeNames(nodeList, taiwanFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 36000
+- type: url-test
+  name: 🇬🇧 英国
+  proxies: {{ getClashNodeNames(nodeList, customFilters.UKFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 36000
+- type: url-test
+  name: 🇷🇺 俄罗斯
+  proxies: {{ getClashNodeNames(nodeList, customFilters.RSFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 36000
+- type: url-test
+  name: 🇮🇳 印度
+  proxies: {{ getClashNodeNames(nodeList, customFilters.INDFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 36000
+- type: url-test
+  name: 🇨🇦 CA
+  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
 - type: select

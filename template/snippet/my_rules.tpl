@@ -30,6 +30,7 @@ DOMAIN-SUFFIX,githubusercontent.com,{{ rule }}
 DOMAIN-SUFFIX,ssrcloud.com,{{ rule }}
 DOMAIN-SUFFIX,netlify.app,{{ rule }}
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
+DOMAIN-SUFFIX,remotasks.com,{{ US_node }}
 
 DOMAIN-SUFFIX,asus.com, DIRECT
 DOMAIN-SUFFIX,acl4ssr,DIRECT

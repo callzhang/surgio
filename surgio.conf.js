@@ -37,11 +37,17 @@ module.exports = {
     {
       name: 'paypal', // 模板中对应 remoteSnippets.paypal
       url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
-    },
+    }
   ],
-  // customFilters: {
-  //   hktFilter: utils.useKeywords(['hkt', 'HKT']),
-  // },
+  
+  customFilters: {
+    // hktFilter: utils.useKeywords(['hkt', 'HKT']),
+    UKFilter: nodeConfig => nodeConfig.nodeName.includes('英国'),
+    INDFilter: nodeConfig => nodeConfig.nodeName.includes('印度'),
+    RSFilter: nodeConfig => nodeConfig.nodeName.includes('俄罗斯'),
+    CAFilter: nodeConfig => nodeConfig.nodeName.includes('加拿大'),
+  },
+
   artifacts: [
     /**
      * Surge
