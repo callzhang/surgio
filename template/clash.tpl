@@ -129,6 +129,7 @@ proxy-groups:
   proxies: [DIRECT, 🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
   url: {{ proxyTestUrl }}
   interval: 60
+  tolerance: 150
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
