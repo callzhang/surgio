@@ -21,7 +21,7 @@ bypass-tun = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12
 # 是否截取并保存 HTTP 流量 (启用后将对性能有较大影响) (默认值: false)
 replica = false
 # 是否启动完整的 IPv6 支持 (默认值: false)
-ipv6 = false
+ipv6 = true
 
 # 以下参数仅供 macOS 版本使用（多端口监听仅 Surge 3 支持）
 http-listen = 0.0.0.0:6152

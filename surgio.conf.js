@@ -82,8 +82,8 @@ module.exports = {
     {
       name: 'stardust.yaml',
       template: 'clash',
-      provider: 'SSRCloud1',
-      combineProviders: ['SSRCloud2', 'hitun', 'stardust'],
+      provider: 'stardust',
+      combineProviders: ['SSRCloud1', 'SSRCloud2', 'hitun'],
       customParams: {
         dns: true,
       }

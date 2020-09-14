@@ -69,7 +69,7 @@ dns:
 tun:
   stack: system
   macOS-auto-route: true #Automatic set global routing on macOS.
-  # macOS-auto-detect-interface: true #Automatic choose traffic exits interface on macOS. Have bug on this option, please use interface-name: en0 in experimental
+  macOS-auto-detect-interface: true #Automatic choose traffic exits interface on macOS. 
   enable: true
 
 # allow-lan: false
@@ -126,7 +126,7 @@ proxies: {{ getClashNodes(nodeList) | json }}
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择
-  proxies: [DIRECT, 🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
+  proxies: [🇭🇰 HK, DIRECT, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
   url: {{ proxyTestUrl }}
   interval: 60
   tolerance: 150
