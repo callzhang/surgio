@@ -126,10 +126,10 @@ proxies: {{ getClashNodes(nodeList) | json }}
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择
-  proxies: [🇭🇰 HK, DIRECT, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
+config  proxies: [🇭🇰 HK, DIRECT, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度]
   url: {{ proxyTestUrl }}
   interval: 60
-  tolerance: 150
+  tolerance: 100
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
@@ -175,11 +175,11 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, customFilters.INDFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
-- type: url-test
-  name: 🇨🇦 CA
-  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
+#- type: url-test
+#  name: 🇨🇦 CA
+#  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
+#  url: {{ proxyTestUrl }}
+#  interval: 36000
 - type: select
   name: 🍎 Apple
   proxies:

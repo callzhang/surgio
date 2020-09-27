@@ -90,9 +90,10 @@ module.exports = {
     },
     
     {
-      name: 'stardust_only.yaml',
+      name: 'stardust_mobile.yaml',
       template: 'clash',
       provider: 'stardust',
+      combineProviders: ['SSRCloud2'],
       customParams: {
         dns: true,
       }
