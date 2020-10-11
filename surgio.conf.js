@@ -19,6 +19,10 @@ module.exports = {
       url: 'https://raw.githubusercontent.com/du5/gfwlist/master/Rules/Surge/gfwlist.list'
     },
     {
+      name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
+      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list'
+    },
+    {
       name: 'telegram', // 模板中对应 remoteSnippets.telegram
       url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
     },
@@ -64,7 +68,7 @@ module.exports = {
     // },
     // // 合并 Provider
     {
-      name: 'SurgeV3_combine.conf',
+      name: 'SurgeV3.conf',
       template: 'surge_v3',
       provider: 'SSRCloud1',
       combineProviders: ['SSRCloud2', 'hitun', 'stardust'],
@@ -164,7 +168,7 @@ module.exports = {
   },
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /
-    prefix: '/科学上网/',
+    prefix: '/gfw/',
     bucket: 'stardust-public',
     // 支持所有区域
     region: 'oss-cn-hangzhou',

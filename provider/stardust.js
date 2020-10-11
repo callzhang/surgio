@@ -3,11 +3,11 @@
 module.exports = {
   type: 'custom',
   nodeList: [
+    {nodeName: "🇭🇰 AliYunHK", type: 'shadowsocks', hostname: '47.244.180.212', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
     {nodeName: "🇺🇸 GoogleLosAngels", type: 'shadowsocks', hostname: '34.94.174.162', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
     {nodeName: "🇸🇬 GoogleSingapore", type: 'shadowsocks', hostname: '35.247.154.33', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
     {nodeName: "🇨🇳 GoogleTW", type: 'shadowsocks', hostname: '35.229.151.32', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
     {nodeName: "🇭🇰 GoogleHK", type: 'shadowsocks', hostname: '35.220.132.85', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
-    {nodeName: "🇭🇰 AliYunHK", type: 'shadowsocks', hostname: '47.244.180.212', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
     {nodeName: "🇭🇰 AliYunHK_SNELL", type: 'snell', hostname: '47.244.180.212', port: 80, psk: 'zc3MCNTQkNFT', 'obfs': 'http'},
     // {
     //   type: 'shadowsocks',

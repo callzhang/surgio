@@ -29,6 +29,8 @@ DOMAIN-SUFFIX,onetravel.com,{{ rule }}
 DOMAIN-SUFFIX,githubusercontent.com,{{ rule }}
 DOMAIN-SUFFIX,ssrcloud.com,{{ rule }}
 DOMAIN-SUFFIX,netlify.app,{{ rule }}
+DOMAIN-SUFFIX,asuscomm.com,{{ rule }}
+
 #美国节点
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 DOMAIN-SUFFIX,remotasks.com,{{ US_node }}

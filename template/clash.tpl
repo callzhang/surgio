@@ -126,7 +126,7 @@ proxies: {{ getClashNodes(nodeList) | json }}
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择
-config  proxies: [🇭🇰 HK, DIRECT, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度]
+  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度]
   url: {{ proxyTestUrl }}
   interval: 60
   tolerance: 100
@@ -202,7 +202,8 @@ rules:
 {{ remoteSnippets.telegram.main('🚀 自动选择') | clash }}
 {{ blocked_rules.main('🚀 自动选择') | clash }}
 {{ direct_rules.main('DIRECT') | clash }}
-{{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
+#{{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
+{{ remoteSnippets.proxyLite.main('🚀 自动选择') | clash }}
 
 # LAN
 - DOMAIN-SUFFIX,local,DIRECT
