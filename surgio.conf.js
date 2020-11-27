@@ -71,7 +71,7 @@ module.exports = {
       name: 'SurgeV3.conf',
       template: 'surge_v3',
       provider: 'SSRCloud1',
-      combineProviders: ['SSRCloud2', 'hitun', 'stardust'],
+      combineProviders: ['hitun', 'stardust'],
     },
     // // Surge + SSR
     // {
@@ -87,7 +87,7 @@ module.exports = {
       name: 'stardust.yaml',
       template: 'clash',
       provider: 'stardust',
-      combineProviders: ['SSRCloud1', 'SSRCloud2', 'hitun'],
+      combineProviders: ['SSRCloud1', 'hitun'],
       customParams: {
         dns: true,
       }
@@ -97,7 +97,7 @@ module.exports = {
       name: 'stardust_mobile.yaml',
       template: 'clash',
       provider: 'stardust',
-      combineProviders: ['SSRCloud2'],
+      combineProviders: ['SSRCloud1'],
       customParams: {
         dns: true,
       }
@@ -168,7 +168,7 @@ module.exports = {
   },
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /
-    prefix: '/gfw/',
+    prefix: '/科学上网/',
     bucket: 'stardust-public',
     // 支持所有区域
     region: 'oss-cn-hangzhou',
