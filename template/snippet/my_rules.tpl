@@ -30,6 +30,7 @@ DOMAIN-SUFFIX,githubusercontent.com,{{ rule }}
 DOMAIN-SUFFIX,ssrcloud.com,{{ rule }}
 DOMAIN-SUFFIX,netlify.app,{{ rule }}
 DOMAIN-SUFFIX,asuscomm.com,{{ rule }}
+DOMAIN-SUFFIX,curiositystream.com,{{ rule }}
 
 #美国节点
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}

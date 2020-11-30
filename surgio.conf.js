@@ -14,13 +14,13 @@ module.exports = {
    * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
    */
   remoteSnippets: [
-    {
-      name: 'gfwlist',
-      url: 'https://raw.githubusercontent.com/du5/gfwlist/master/Rules/Surge/gfwlist.list'
-    },
+    // {
+    //   name: 'gfwlist',
+    //   url: 'http://fc.startask.net/gfwlist?tiny=false'
+    // },
     {
       name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
-      url: 'https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/ProxyLite.list'
+      url: 'http://fc.startask.net/gfwlist?tiny=true'
     },
     {
       name: 'telegram', // 模板中对应 remoteSnippets.telegram
@@ -182,6 +182,7 @@ module.exports = {
   gateway: {
     auth: true,
     accessToken: 'stardust2017',
+    useCacheOnError: true,//是否在 Artifact 生成错误时使用缓存（上一次正确请求的结果）。如果 Artifact 中的某个 Provider 经常请求错误则建议开启这个选项，可以避免 Clash 等客户端在配置文件请求报错的时候崩溃。
   },
 };
 
