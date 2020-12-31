@@ -4,6 +4,7 @@ const { utils } = require('surgio');
 const SSRCloud1 = require('./provider/SSRCloud1');//Derek
 const SSRCloud2 = require('./provider/SSRCloud2');//Jia
 const SSRCloud3 = require('./provider/SSRCloud3');//Jia
+const dler = require('./provider/dler');//zitao
 
 /**
  * 使用文档：https://surgio.royli.dev/
@@ -14,34 +15,35 @@ module.exports = {
    * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
    */
   remoteSnippets: [
+    {
+      name: 'gfwlist',
+      // url: 'http://fc.startask.net/gfwlist?tiny=false'
+      url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
+    },
     // {
-    //   name: 'gfwlist',
-    //   url: 'http://fc.startask.net/gfwlist?tiny=false'
+    //   name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
+    //   url: 'http://fc.startask.net/gfwlist?tiny=true'
     // },
-    {
-      name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
-      url: 'http://fc.startask.net/gfwlist?tiny=true'
-    },
-    {
-      name: 'telegram', // 模板中对应 remoteSnippets.telegram
-      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
-    },
-    {
-      name: 'netflix', // 模板中对应 remoteSnippets.netflix
-      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Netflix.list'
-    },
-    {
-      name: 'hbo', // 模板中对应 remoteSnippets.hbo
-      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/HBO.list'
-    },
-    {
-      name: 'hulu', // 模板中对应 remoteSnippets.hulu
-      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Hulu.list'
-    },
-    {
-      name: 'paypal', // 模板中对应 remoteSnippets.paypal
-      url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
-    }
+    // {
+    //   name: 'telegram', // 模板中对应 remoteSnippets.telegram
+    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
+    // },
+    // {
+    //   name: 'netflix', // 模板中对应 remoteSnippets.netflix
+    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Netflix.list'
+    // },
+    // {
+    //   name: 'hbo', // 模板中对应 remoteSnippets.hbo
+    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/HBO.list'
+    // },
+    // {
+    //   name: 'hulu', // 模板中对应 remoteSnippets.hulu
+    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Hulu.list'
+    // },
+    // {
+    //   name: 'paypal', // 模板中对应 remoteSnippets.paypal
+    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
+    // }
   ],
   
   customFilters: {
@@ -70,8 +72,8 @@ module.exports = {
     {
       name: 'SurgeV3.conf',
       template: 'surge_v3',
-      provider: 'SSRCloud1',
-      combineProviders: ['hitun', 'stardust'],
+      provider: 'stardust',
+      combineProviders: ['hitun', 'dler'],
     },
     // // Surge + SSR
     // {
@@ -87,7 +89,7 @@ module.exports = {
       name: 'stardust.yaml',
       template: 'clash',
       provider: 'stardust',
-      combineProviders: ['SSRCloud1', 'hitun'],
+      combineProviders: ['hitun', 'dler'],
       customParams: {
         dns: true,
       }
@@ -97,7 +99,7 @@ module.exports = {
       name: 'stardust_mobile.yaml',
       template: 'clash',
       provider: 'stardust',
-      combineProviders: ['SSRCloud1'],
+      combineProviders: ['hitun', 'dler'],
       customParams: {
         dns: true,
       }

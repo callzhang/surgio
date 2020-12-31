@@ -194,16 +194,11 @@ proxy-groups:
 rules:
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
 {{ apple_rules.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash }}
-{{ remoteSnippets.netflix.main('🎬 Netflix') | clash }}
-{{ remoteSnippets.hbo.main('🚀 自动选择') | clash }}
-{{ remoteSnippets.hulu.main('🚀 自动选择') | clash }}
 {{ youtube_rules.main('🚀 自动选择') | clash }}
 {{ us_rules.main('🇺🇸 US') | clash }}
-{{ remoteSnippets.telegram.main('🚀 自动选择') | clash }}
 {{ blocked_rules.main('🚀 自动选择') | clash }}
 {{ direct_rules.main('DIRECT') | clash }}
-#{{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
-{{ remoteSnippets.proxyLite.main('🚀 自动选择') | clash }}
+{{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
 
 # LAN
 - DOMAIN-SUFFIX,local,DIRECT

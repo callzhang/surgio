@@ -69,23 +69,13 @@ always-real-ip = *.apple.com, *.srv.nintendo.net, *.stun.playstation.net, xbox.*
 
 {{ apple_rules.main('🚀 Proxy', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') }}
 
-{{ remoteSnippets.netflix.main('🎬 Netflix') }}
-
-{{ remoteSnippets.hbo.main('🎬 Netflix') }}
-
-{{ remoteSnippets.hulu.main('🎬 Netflix') }}
-
 {{ youtube_rules.main('🚀 Proxy') }}
 
 {{ us_rules.main('🇺🇸 US') }}
 
-{{ remoteSnippets.telegram.main('🚀 Proxy') }}
-
 {{ blocked_rules.main('🚀 Proxy') }}
 
 {{ direct_rules.main('DIRECT') }}
-
-{{ remoteSnippets.proxyLite.main('🚀 Proxy') }}
 
 # Rulesets
 RULE-SET,SYSTEM,DIRECT
