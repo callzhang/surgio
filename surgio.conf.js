@@ -17,8 +17,8 @@ module.exports = {
   remoteSnippets: [
     {
       name: 'gfwlist',
-      // url: 'http://fc.startask.net/gfwlist?tiny=false'
-      url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
+      url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
+      // url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
     },
     // {
     //   name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
