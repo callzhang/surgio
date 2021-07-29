@@ -2,7 +2,7 @@
 const { utils } = require('surgio');
 
 module.exports = {
-    url: 'https://dler.cloud/subscribe/Ulep1Ha1dk8LLGbi?mu=ss', 
+    url: 'https://dler.cloud/subscribe/5akvbhALke89OcyWg6?mu=smart',
 //   url: 'https://dler.cloud/subscribe/Ulep1Ha1dk8LLGbi?mu=ssr',
 //   type: 'shadowsocksr_subscribe',
     type: 'shadowsocks_subscribe',
