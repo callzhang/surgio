@@ -1,6 +1,7 @@
 {% macro main(rule, US_node) %}
 
 # Derek's Rules
+DOMAIN-SUFFIX,dler.cloud,{{ rule }}
 DOMAIN-KEYWORD,slack,{{ rule }}
 DOMAIN-KEYWORD,adobe,{{ rule }}
 DOMAIN-KEYWORD,hitun,{{ rule }}
@@ -24,7 +25,6 @@ DOMAIN-SUFFIX,stanford.edu,{{ rule }}
 DOMAIN-SUFFIX,cloudfunctions.net,{{ rule }}
 DOMAIN-SUFFIX,wikipedia.org,{{ rule }}
 DOMAIN-SUFFIX,slack-edge.com,{{ rule }}
-DOMAIN-SUFFIX,海豚湾.com,{{ rule }}
 DOMAIN-SUFFIX,onetravel.com,{{ rule }}
 DOMAIN-SUFFIX,githubusercontent.com,{{ rule }}
 DOMAIN-SUFFIX,ssrcloud.com,{{ rule }}
@@ -33,6 +33,7 @@ DOMAIN-SUFFIX,asuscomm.com,{{ rule }}
 DOMAIN-SUFFIX,curiositystream.com,{{ rule }}
 
 #美国节点
+DOMAIN-SUFFIX,www.puritan.com,{{ US_node }}
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 DOMAIN-SUFFIX,remotasks.com,{{ US_node }}
 DOMAIN-SUFFIX,losadhwselfff2332dasd.xyz,{{ US_node }}

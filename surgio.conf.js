@@ -20,6 +20,11 @@ module.exports = {
       url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
       // url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
     },
+    {
+      url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
+      name: 'apple', // 模板中对应 remoteSnippets.apple
+      surgioSnippet: true
+    },
     // {
     //   name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
     //   url: 'http://fc.startask.net/gfwlist?tiny=true'
@@ -28,10 +33,10 @@ module.exports = {
     //   name: 'telegram', // 模板中对应 remoteSnippets.telegram
     //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
     // },
-    // {
-    //   name: 'netflix', // 模板中对应 remoteSnippets.netflix
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Netflix.list'
-    // },
+    {
+      name: 'netflix', // 模板中对应 remoteSnippets.netflix
+      url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/netflix.list'
+    },
     // {
     //   name: 'hbo', // 模板中对应 remoteSnippets.hbo
     //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/HBO.list'
@@ -95,15 +100,15 @@ module.exports = {
       }
     },
     
-    {
-      name: 'stardust_mobile.yaml',
-      template: 'clash',
-      provider: 'stardust',
-      combineProviders: ['hitun', 'dler'],
-      customParams: {
-        dns: true,
-      }
-    },
+    // {
+    //   name: 'stardust_mobile.yaml',
+    //   template: 'clash',
+    //   provider: 'stardust',
+    //   combineProviders: ['hitun', 'dler'],
+    //   customParams: {
+    //     dns: true,
+    //   }
+    // },
 
     /**
      * Quantumult

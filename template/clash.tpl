@@ -185,19 +185,21 @@ proxy-groups:
   proxies:
     - DIRECT
     - 🚀 自动选择
-- type: url-test
-  name: 🎬 Netflix
-  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
+#- type: url-test
+#  name: 🎬 Netflix
+#  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+#  url: {{ proxyTestUrl }}
+#  interval: 36000
 
 rules:
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
-{{ apple_rules.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash }}
+# {{ apple_rules.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash }}
+{{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
+{{ remoteSnippets.netflix.main('🇺🇸 US') | clash}}
 {{ youtube_rules.main('🚀 自动选择') | clash }}
 {{ us_rules.main('🇺🇸 US') | clash }}
 {{ blocked_rules.main('🚀 自动选择') | clash }}
-{{ direct_rules.main('DIRECT') | clash }}
+# {{ direct_rules.main('DIRECT') | clash }}
 {{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
 
 # LAN
