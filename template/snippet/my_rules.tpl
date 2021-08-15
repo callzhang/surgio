@@ -1,6 +1,7 @@
 {% macro main(rule, US_node) %}
 
 # Derek's Rules
+DOMAIN-SUFFIX,notion.so,{{ rule }}
 DOMAIN-SUFFIX,dler.cloud,{{ rule }}
 DOMAIN-KEYWORD,slack,{{ rule }}
 DOMAIN-KEYWORD,adobe,{{ rule }}
