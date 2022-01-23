@@ -74,12 +74,12 @@ module.exports = {
     //   provider: 'subscribe_demo',
     // },
     // // 合并 Provider
-    {
-      name: 'SurgeV3.conf',
-      template: 'surge_v3',
-      provider: 'stardust',
-      combineProviders: ['hitun', 'dler'],
-    },
+    // {
+    //   name: 'SurgeV3.conf',
+    //   template: 'surge_v3',
+    //   provider: 'stardust',
+    //   combineProviders: ['hitun', 'dler'],
+    // },
     // // Surge + SSR
     // {
     //   name: 'SurgeV3_ssr.conf',

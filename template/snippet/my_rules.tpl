@@ -32,6 +32,10 @@ DOMAIN-SUFFIX,ssrcloud.com,{{ rule }}
 DOMAIN-SUFFIX,netlify.app,{{ rule }}
 DOMAIN-SUFFIX,asuscomm.com,{{ rule }}
 DOMAIN-SUFFIX,curiositystream.com,{{ rule }}
+DOMAIN-SUFFIX,cvlibs.net,{{ rule }}
+DOMAIN-SUFFIX,dler.cloud,{{ rule }}
+DOMAIN-SUFFIX,whimsical.com,{{ rule }}
+
 
 #美国节点
 DOMAIN-SUFFIX,www.puritan.com,{{ US_node }}
