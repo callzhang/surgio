@@ -11,7 +11,7 @@ module.exports = {
       network: 'tcp', // 仅支持 tcp/ws
       path: '/',
       port: 6522,
-      alterId: '64',
+      alterId: '56',
       tls: false,
       host: 'qq.com', // 此属性相当于 wsHeaders.host，但推荐配置在 wsHeaders.host 上
       uuid: 'f50cda66-7d3c-43d4-801e-4151457296db',
