@@ -3,35 +3,37 @@
 module.exports = {
   type: 'custom',
   nodeList: [
-    {nodeName: "🇭🇰 AliYunHK", type: 'shadowsocks', hostname: '47.244.180.212', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
-    {nodeName: "🇺🇸 GoogleLosAngels", type: 'shadowsocks', hostname: '34.94.174.162', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
-    {nodeName: "🇸🇬 GoogleSingapore", type: 'shadowsocks', hostname: '35.247.154.33', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
-    {nodeName: "🇨🇳 GoogleTW", type: 'shadowsocks', hostname: '35.229.151.32', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
-    {nodeName: "🇭🇰 GoogleHK", type: 'shadowsocks', hostname: '35.220.132.85', port: 8080, method: 'chacha20-ietf-poly1305', password: "zc3MCNTQkNFT", 'udp-relay': true, tfp: true, 'obfs': 'http', 'obfs-host': 'reily.app'},
-    {nodeName: "🇭🇰 AliYunHK_SNELL", type: 'snell', hostname: '47.244.180.212', port: 80, psk: 'zc3MCNTQkNFT', 'obfs': 'http'},
-    // {
-    //   type: 'shadowsocks',
-    //   nodeName: '🇺🇸US',
-    //   hostname: 'us.example.com',
-    //   port: 10000,
-    //   method: 'chacha20-ietf-poly1305',
-    //   password: 'password',
-    //   obfs: 'tls', // tls, http, ws, wss
-    //   'obfs-host': 'gateway-carry.icloud.com',
-    //   'obfs-uri': '/', // 当 obfs 为 ws 或 wss 时可配置
-    //   'udp-relay': true,
-    //   tfo: false, // TCP Fast Open
-    //   tls13: false, // TLS 1.3，适用于 v2ray-plugin
-    //   mux: false, // 目前仅 Clash + Shadowsocks + v2ray-plugin 可用
-    // },
-    // {
-    //   type: 'snell',
-    //   nodeName: '🇭🇰HK',
-    //   hostname: 'hk.example.com',
-    //   port: 10000,
-    //   psk: 'RjEJRhNPps3DrYBcEQrcMe3q9NzFLMP',
-    //   obfs: 'tls', // tls 或 http
-    //   version: '2', // 可选
-    // }
+    {
+      nodeName: '🇭🇰Tencent',
+      type: 'vmess',
+      hostname: '43.134.199.192',
+      method: 'auto', // 仅支持 auto/aes-128-gcm/chacha20-ietf-poly1305/none
+      network: 'tcp', // 仅支持 tcp/ws
+      path: '/',
+      port: 6522,
+      alterId: '64',
+      tls: false,
+      host: 'qq.com', // 此属性相当于 wsHeaders.host，但推荐配置在 wsHeaders.host 上
+      uuid: 'f50cda66-7d3c-43d4-801e-4151457296db',
+      tfo: false, // TCP Fast Open
+      tls13: false, // TLS 1.3, TLS 开启时有效
+      'udp-relay': true, // 开启 UDP 转发
+    },
+    {
+      nodeName: '🇭🇰Tencent2',
+      type: 'vmess',
+      hostname: '43.158.192.92',
+      method: 'auto', // 仅支持 auto/aes-128-gcm/chacha20-ietf-poly1305/none
+      network: 'tcp', // 仅支持 tcp/ws
+      path: '/',
+      port: 153,
+      alterId: '0',
+      tls: false,
+      host: 'qq.com', // 此属性相当于 wsHeaders.host，但推荐配置在 wsHeaders.host 上
+      uuid: 'f5a3da84-20b8-49ab-8947-7bff9e4f17e5',
+      tfo: false, // TCP Fast Open
+      tls13: false, // TLS 1.3, TLS 开启时有效
+      'udp-relay': true, // 开启 UDP 转发
+    },
   ],
 };
