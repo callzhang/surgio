@@ -23,6 +23,7 @@ module.exports = {
       nodeName: '🇭🇰Tencent-ss',
       type: 'shadowsocks',
       hostname: '43.154.224.172',
+      password: 'work4star',
       method: 'auto', // 仅支持 auto/aes-128-gcm/chacha20-ietf-poly1305/none
       network: 'tcp', // 仅支持 tcp/ws
       path: '/',
