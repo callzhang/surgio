@@ -2,7 +2,8 @@
 const { utils } = require('surgio');
 
 module.exports = {
-  url: 'https://rss-node.com/link/FvKOEaQUb70Bq1Jh?mu=1',
+  // url: 'https://rss.rss-node.com/link/FvKOEaQUb70Bq1Jh?mu=1',
+  url: 'https://subscribe.rss-node.com/link/FvKOEaQUb70Bq1Jh?mu=1',
   type: 'shadowsocksr_subscribe',
   // 定义所有的节点都支持 udpRelay
   udpRelay: true,

@@ -25,7 +25,23 @@
 
 **使用方式**
 - 首先需要在翻墙环境才可以下载remote snippets
+- 使用`sh run_update.sh`，完成整个步骤
 - 更新脚本：`npx surgio generate`，生成的模板会保存在“dist”文件夹里
 - 上传至OSS：`npx surgio upload`，模板会上传至制定位置
 - 部署至云端：`vercel --prod`，具体见[文档](https://surgio.js.org/guide/advance/api-gateway.html#%E9%83%A8%E7%BD%B2-vercel)
     
+
+# 环境变量
+> 注意: 以下环境变量仅供调试使用
+
+- SURGIO_NETWORK_TIMEOUT
+    - 默认值: 5000 单位: 秒
+- SURGIO_NETWORK_RETRY
+    - 默认值: 0
+    - 举例，当最大重试次数为 2 时，加上原始的请求最多会请求 3 次。
+- SURGIO_NETWORK_CONCURRENCY
+    - 默认值: 5
+- SURGIO_REMOTE_SNIPPET_CACHE_MAXAGE
+    - 默认值: 43200000（12 小时）
+- SURGIO_PROVIDER_CACHE_MAXAGE
+    - 默认值: 600000（10 分钟）

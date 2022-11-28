@@ -61,54 +61,27 @@ module.exports = {
 
   artifacts: [
     /**
-     * Surge
-     */
-    // {
-    //   name: 'SurgeV3.conf', // 新版 Surge
-    //   template: 'surge_v3',
-    //   provider: 'demo',
-    // },
-    // {
-    //   name: 'Surge_simple.conf', // 旧版 Surge
-    //   template: 'surge_simple',
-    //   provider: 'subscribe_demo',
-    // },
-    // // 合并 Provider
-    // {
-    //   name: 'SurgeV3.conf',
-    //   template: 'surge_v3',
-    //   provider: 'stardust',
-    //   combineProviders: ['hitun', 'dler'],
-    // },
-    // // Surge + SSR
-    // {
-    //   name: 'SurgeV3_ssr.conf',
-    //   template: 'surge_v3',
-    //   provider: 'ssr_subscribe_demo',
-    // },
-
-    /**
      * Clash
      */
     {
       name: 'stardust.yaml',
       template: 'clash',
       provider: 'stardust',
-      combineProviders: ['hitun', 'dler'],
+      combineProviders: ['hitun'],
       customParams: {
         dns: true,
       }
     },
     
-    // {
-    //   name: 'stardust_mobile.yaml',
-    //   template: 'clash',
-    //   provider: 'stardust',
-    //   combineProviders: ['hitun', 'dler'],
-    //   customParams: {
-    //     dns: true,
-    //   }
-    // },
+    {
+      name: 'stardust_linux.yaml',
+      template: 'clash',
+      provider: 'stardust',
+      combineProviders: ['hitun'],
+      customParams: {
+        dns: true,
+      }
+    },
 
     /**
      * Quantumult

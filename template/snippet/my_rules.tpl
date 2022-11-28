@@ -35,6 +35,12 @@ DOMAIN-SUFFIX,curiositystream.com,{{ rule }}
 DOMAIN-SUFFIX,cvlibs.net,{{ rule }}
 DOMAIN-SUFFIX,dler.cloud,{{ rule }}
 DOMAIN-SUFFIX,whimsical.com,{{ rule }}
+DOMAIN-SUFFIX,producthunt.com,{{ rule }}
+DOMAIN-SUFFIX,kosy.onlin,{{ rule }}
+DOMAIN-SUFFIX,kosyoffice.com,{{ rule }}
+DOMAIN-SUFFIX,linkedin.com,{{ rule }}
+DOMAIN-SUFFIX,linkedin.cn,{{ rule }}
+DOMAIN-SUFFIX,rss-node.com,{{ rule }}
 
 
 #美国节点

@@ -7,24 +7,94 @@
 
 # {{ downloadUrl }}
 
-# HTTP 端口
+# Port of HTTP(S) proxy server on the local end
 port: 7890
 
-# SOCKS5 端口
+# Port of SOCKS5 proxy server on the local end
 socks-port: 7891
 
-# # Linux 及 macOS 的 redir 端口
+# Transparent proxy server port for Linux and macOS (Redirect TCP and TProxy UDP)
 redir-port: 7892
 
-# url test address
-latency-url: http://www.google.com
-proxies-order: latency #按节点延迟升序排列
+# Transparent proxy server port for Linux (TProxy TCP and TProxy UDP)
+tproxy-port: 7893
+
+# HTTP(S) and SOCKS4(A)/SOCKS5 server on the same port
+mixed-port: 7890
+
+# authentication of local SOCKS5/HTTP(S) server
+# authentication:
+#  - "user1:pass1"
+#  - "user2:pass2"
+
+# Set to true to allow connections to the local-end server from
+# other LAN IP addresses
+allow-lan: true
+
+# This is only applicable when `allow-lan` is `true`
+# '*': bind all IP addresses
+# 192.168.122.11: bind a single IPv4 address
+# "[aaaa::a8aa:ff:fe09:57d8]": bind a single IPv6 address
+bind-address: '*'
+
+# Clash router working mode
+# rule: rule-based packet routing
+# global: all packets will be forwarded to a single endpoint
+# direct: directly forward the packets to the Internet
+mode: rule
+
+# Clash by default prints logs to STDOUT
+# info / warning / error / debug / silent
+log-level: info
+
+# When set to false, resolver won't translate hostnames to IPv6 addresses
+ipv6: true
+
+# RESTful web API listening address
+external-controller: 127.0.0.1:9090
+
+# A relative path to the configuration directory or an absolute path to a
+# directory in which you put some static web resource. Clash core will then
+# serve it at `http://{{external-controller}}/ui`.
+# external-ui: folder
+
+# Secret for the RESTful API (optional)
+# Authenticate by spedifying HTTP header `Authorization: Bearer ${secret}`
+# ALWAYS set a secret if RESTful API is listening on 0.0.0.0
+# secret: ""
+
+# Outbound interface name
+interface-name: en0
+
+# fwmark on Linux only
+routing-mark: 6666
+
+# Static hosts for DNS server and connection establishment (like /etc/hosts)
+#
+# Wildcard hostnames are supported (e.g. *.clash.dev, *.foo.*.example.com)
+# Non-wildcard domain names have a higher priority than wildcard domain names
+# e.g. foo.example.com > *.example.com > .example.com
+# P.S. +.foo.com equals to .foo.com and foo.com
+hosts:
+  # '*.clash.dev': 127.0.0.1
+  # '.dev': 127.0.0.1
+  # 'alpha.clash.dev': '::1'
+
+profile:
+  # Store the `select` results in $HOME/.config/clash/.cache
+  # set false If you don't want this behavior
+  # when two different configurations have groups with the same name, the selected values are shared
+  store-selected: true
+
+  # persistence fakeip
+  store-fake-ip: true
 
 # icon
 cfw-tray-icon: 
   default: https://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/icon_bw.ico          # 默认图标
   system-proxy-on: https://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/icon.ico   # 开启系统代理后图标
 
+{% if customParams.dns %}
 # 1. clash DNS 请求逻辑：
 #   (1) 当访问一个域名时， nameserver 与 fallback 列表内的所有服务器并发请求，得到域名对应的 IP 地址。
 #   (2) clash 将选取 nameserver 列表内，解析最快的结果。
@@ -42,82 +112,74 @@ cfw-tray-icon:
 #   DoH: 以 https:// 开头的 DNS 服务器。拥有更好的伪装性，且几乎不可能被运营商或网络管理封锁，但查询效率和安全性可能略低。
 #   DoT: 以 tls:// 开头的 DNS 服务器。拥有更高的安全性和查询效率，但端口有可能被管制或封锁。
 #   若要了解更多关于 DoH/DoT 相关技术，请自行查阅规范文档。
-{% if customParams.dns %}
+# DNS server settings
+# This section is optional. When not present, the DNS server will be disabled.
 dns:
-  enable: true # set true to enable dns (default is false)
-  ipv6: true # default is false
-  listen: 0.0.0.0:53
-  enhanced-mode: redir-host
-  nameserver:
-    - 114.114.114.114
-    - tls://dns.rubyfish.cn:853 # dns over tls
-    - https://1.1.1.1/dns-query # dns over https
-  fallback: # concurrent request with nameserver, fallback used when GEOIP country isn't CN
-    - 8.8.8.8
-    - tcp://1.1.1.1
-    - tls://13800000000.rubyfish.cn:853
-    - tls://1.0.0.1:853
-    - tls://dns.google:853
-  fallback-filter: 
-    geoip: true # default
-    ipcidr: # ips in these subnets will be considered polluted
-      - 240.0.0.0/4
-{% endif %}
-
-# interface-name: en0 #windows不兼容
-
-tun:
-  stack: system
-  macOS-auto-route: true #Automatic set global routing on macOS.
-  macOS-auto-detect-interface: true #Automatic choose traffic exits interface on macOS. 
   enable: true
+  listen: 0.0.0.0:53
+  ipv6: true # when the false, response to AAAA questions will be empty
 
-# allow-lan: false
+  # These nameservers are used to resolve the DNS nameserver hostnames below.
+  # Specify IP addresses only
+  default-nameserver:
+    - 114.114.114.114
+    - 8.8.8.8
+  enhanced-mode: fake-ip # or redir-host (not recommended)
+  fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
+  # use-hosts: true # lookup hosts and return IP record
+  
+  # Hostnames in this list will not be resolved with fake IPs
+  # i.e. questions to these domain names will always be answered with their
+  # real IP addresses
+  # fake-ip-filter:
+  #   - '*.lan'
+  #   - localhost.ptlogin2.qq.com
+  
+  # Supports UDP, TCP, DoT, DoH. You can specify the port to connect to.
+  # All DNS questions are sent directly to the nameserver, without proxies
+  # involved. Clash answers the DNS question with the first result gathered.
+  nameserver:
+    - 114.114.114.114 # default value
+    - 8.8.8.8 # default value
+    - tls://dns.rubyfish.cn:853 # DNS over TLS
+    - https://1.1.1.1/dns-query # DNS over HTTPS
+    - dhcp://en0 # dns from dhcp
+    # - '8.8.8.8#en0'
 
-# 仅适用于设置 allow-lan 为 true 时
-# "*": 绑定所有 IP 地址
-  # 192.168.122.11: 绑定单个 IPv4 地址
-# "[aaaa::a8aa:ff:fe09:57d8]": 绑定单个 IPv6 地址
-# bind-address: "*"
+  # When `fallback` is present, the DNS server will send concurrent requests
+  # to the servers in this section along with servers in `nameservers`.
+  # The answers from fallback servers are used when the GEOIP country
+  # is not `CN`.
+  # fallback:
+  #   - tcp://1.1.1.1
+  #   - 'tcp://1.1.1.1#en0'
 
-# Rule / Global / Direct (默认为 Rule 模式)
-mode: Rule
-
-# 设置输出日志的等级 (默认为 info)
-# info / warning / error / debug / silent
-log-level: info
-
-# RESTful API for clash
-external-controller: 127.0.0.1:9090
-
-# you can put the static web resource (such as clash-dashboard) to a directory, and clash would serve in `${API}/ui`
-# input is a relative path to the configuration directory or an absolute path
-# external-ui: folder
-
-# Secret for RESTful API (Optional)
-# secret: ""
-
-# 实验性功能
-# experimental:
-#   ignore-resolve-fail: true # 忽略 DNS 解析失败，默认值为true
-#   interface-name: en0 # 出站接口名称
-
-# 本地 SOCKS5/HTTP(S) 服务器认证
-# authentication:
-#  - "user1:pass1"
-#  - "user2:pass2"
-
-# # 实验性 hosts, 支持通配符（如 *.clash.dev 甚至 *.foo.*.examplex.com ）
-# # 静态域的优先级高于通配符域（foo.example.com > *.example.com）
-hosts:
-  # 'mtalk.google.com': 108.177.125.188
-#   '*.clash.dev': 127.0.0.1
-#   'alpha.clash.dev': '::1'
-
-
-
-# Clash for Windows
-cfw-latency-timeout: 5000
+  # If IP addresses resolved with servers in `nameservers` are in the specified
+  # subnets below, they are considered invalid and results from `fallback`
+  # servers are used instead.
+  #
+  # IP address resolved with servers in `nameserver` is used when
+  # `fallback-filter.geoip` is true and when GEOIP of the IP address is `CN`.
+  #
+  # If `fallback-filter.geoip` is false, results from `nameserver` nameservers
+  # are always used if not match `fallback-filter.ipcidr`.
+  #
+  # This is a countermeasure against DNS pollution attacks.
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+    domain:
+      - '+.google.com'
+      - '+.facebook.com'
+      - '+.youtube.com'
+  
+  # Lookup domains via specific nameservers
+  # nameserver-policy:
+  #   'www.baidu.com': '114.114.114.114'
+  #   '+.internal.crop.com': '10.0.0.1'
+{% endif %}
 
 #-------------------#
 
@@ -140,6 +202,7 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600 #香港频率高一些
+  tolerance: 50
 - type: url-test
   name: 🇸🇬 SG
   proxies: {{ getClashNodeNames(nodeList, singaporeFilter) | json }}
@@ -185,21 +248,22 @@ proxy-groups:
   proxies:
     - DIRECT
     - 🚀 自动选择
-#- type: url-test
-#  name: 🎬 Netflix
-#  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
-#  url: {{ proxyTestUrl }}
-#  interval: 36000
+- type: url-test
+  name: 🎬 Netflix
+  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 36000
 
 rules:
+- GEOIP,CN,DIRECT
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
+{{ direct_rules.main('DIRECT') | clash }}
 # {{ apple_rules.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash }}
 {{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
-{{ remoteSnippets.netflix.main('🇺🇸 US') | clash}}
+{{ remoteSnippets.netflix.main('🎬 Netflix') | clash}}
 {{ youtube_rules.main('🚀 自动选择') | clash }}
 {{ us_rules.main('🇺🇸 US') | clash }}
 {{ blocked_rules.main('🚀 自动选择') | clash }}
-# {{ direct_rules.main('DIRECT') | clash }}
 {{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
 
 # LAN
@@ -211,5 +275,4 @@ rules:
 - IP-CIDR,100.64.0.0/10,DIRECT
 
 # Final
-- GEOIP,CN,DIRECT
 - MATCH,DIRECT
