@@ -6,6 +6,9 @@ const SSRCloud2 = require('./provider/SSRCloud2');//Jia
 const SSRCloud3 = require('./provider/SSRCloud3');//Jia
 const dler = require('./provider/dler');//zitao
 
+// const uuid = require('crypto').randomUUID();
+const uuid = 'cd14ef8e-be91-487d-801e-aa6df828cc7a';
+
 /**
  * 使用文档：https://surgio.royli.dev/
  */
@@ -64,7 +67,7 @@ module.exports = {
      * Clash
      */
     {
-      name: 'stardust.yaml',
+      name: `stardust_${uuid}.yaml`,
       template: 'clash',
       provider: 'stardust',
       combineProviders: ['hitun'],
@@ -74,7 +77,7 @@ module.exports = {
     },
     
     {
-      name: 'stardust_linux.yaml',
+      name: `stardust_linux_${uuid}.yaml`,
       template: 'clash',
       provider: 'stardust',
       combineProviders: ['hitun'],
@@ -148,7 +151,7 @@ module.exports = {
   },
   upload: {
     // 默认保存至根目录，可以在此修改子目录名，以 / 结尾，默认为 /
-    prefix: '/科学上网/',
+    prefix: '/科学上网/rss/',
     bucket: 'stardust-public',
     // 支持所有区域
     region: 'oss-cn-hangzhou',

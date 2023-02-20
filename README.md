@@ -28,7 +28,7 @@
 - 使用`sh run_update.sh`，完成整个步骤
 - 更新脚本：`npx surgio generate`，生成的模板会保存在“dist”文件夹里
 - 上传至OSS：`npx surgio upload`，模板会上传至制定位置
-- 部署至云端：`vercel --prod`，具体见[文档](https://surgio.js.org/guide/advance/api-gateway.html#%E9%83%A8%E7%BD%B2-vercel)
+- 部署至云端：`npx vercel --prod`，具体见[文档](https://surgio.js.org/guide/advance/api-gateway.html#%E9%83%A8%E7%BD%B2-vercel)
     
 
 # 环境变量

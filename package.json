@@ -9,8 +9,8 @@
     "node": ">=12"
   },
   "dependencies": {
-    "@surgio/gateway": "^1.3.3",
-    "surgio": "^2.20.1",
+    "@surgio/gateway": "^1.8.1",
+    "surgio": "^2.25.0",
     "to": "^0.2.9",
     "update": "^0.7.4"
   }
