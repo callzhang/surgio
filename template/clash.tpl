@@ -63,9 +63,6 @@ external-controller: 127.0.0.1:9090
 # ALWAYS set a secret if RESTful API is listening on 0.0.0.0
 # secret: ""
 
-# Outbound interface name
-interface-name: en0
-
 # fwmark on Linux only
 routing-mark: 6666
 
