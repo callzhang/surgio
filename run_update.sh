@@ -7,4 +7,4 @@ export SURGIO_NETWORK_TIMEOUT=10000
 export SURGIO_NETWORK_RETRY=3
 npx surgio generate
 npx surgio upload
-npx vercel --prod
+# npx vercel --prod
