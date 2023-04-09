@@ -41,7 +41,13 @@ DOMAIN-SUFFIX,kosyoffice.com,{{ rule }}
 DOMAIN-SUFFIX,linkedin.com,{{ rule }}
 DOMAIN-SUFFIX,linkedin.cn,{{ rule }}
 DOMAIN-SUFFIX,rss-node.com,{{ rule }}
-
+DOMAIN-SUFFIX,amazonaws.com,{{ rule }}
+DOMAIN-SUFFIX,openai.com,{{ rule }}
+DOMAIN-SUFFIX,chatpdf.com,{{ rule }}
+DOMAIN-SUFFIX,bing.com,{{ rule }}
+DOMAIN-SUFFIX,bing.net,{{ rule }}
+DOMAIN-SUFFIX,poe.com,{{ rule }}
+DOMAIN-SUFFIX,techcrunch.com,{{ rule }}
 
 #美国节点
 DOMAIN-SUFFIX,www.puritan.com,{{ US_node }}

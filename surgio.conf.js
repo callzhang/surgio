@@ -20,22 +20,23 @@ module.exports = {
   remoteSnippets: [
     {
       name: 'gfwlist',
-      url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
-      // url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
+      // url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
+      url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
     },
     {
       url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
       name: 'apple', // 模板中对应 remoteSnippets.apple
       surgioSnippet: true
     },
-    // {
-    //   name: 'proxyLite', //比较精简的代理列表，包含常用的，以及被污染的域名
-    //   url: 'http://fc.startask.net/gfwlist?tiny=true'
-    // },
-    // {
-    //   name: 'telegram', // 模板中对应 remoteSnippets.telegram
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
-    // },
+    {
+      name: 'cn', //比较精简的代理列表，包含常用的，以及被污染的域名
+      url: 'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/CN.yaml'
+    },
+    {
+      name: 'telegram', // 模板中对应 remoteSnippets.telegram
+      // url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
+      url: 'https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt'
+    },
     {
       name: 'netflix', // 模板中对应 remoteSnippets.netflix
       url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/netflix.list'
@@ -68,16 +69,6 @@ module.exports = {
      */
     {
       name: `stardust_${uuid}.yaml`,
-      template: 'clash',
-      provider: 'stardust',
-      combineProviders: ['hitun'],
-      customParams: {
-        dns: true,
-      }
-    },
-    
-    {
-      name: `stardust_linux_${uuid}.yaml`,
       template: 'clash',
       provider: 'stardust',
       combineProviders: ['hitun'],

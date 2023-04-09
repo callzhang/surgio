@@ -251,16 +251,19 @@ proxy-groups:
   url: {{ proxyTestUrl }}
   interval: 36000
 
+
+
 rules:
 - GEOIP,CN,DIRECT
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
+{{ remoteSnippets.cn.main('DIRECT') | clash}}
 {{ direct_rules.main('DIRECT') | clash }}
-# {{ apple_rules.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash }}
 {{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
 {{ remoteSnippets.netflix.main('🎬 Netflix') | clash}}
 {{ youtube_rules.main('🚀 自动选择') | clash }}
 {{ us_rules.main('🇺🇸 US') | clash }}
 {{ blocked_rules.main('🚀 自动选择') | clash }}
+{{ remoteSnippets.telegram.main('🚀 自动选择') | clash }}
 {{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
 
 # LAN
