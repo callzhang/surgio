@@ -271,7 +271,6 @@ rule-providers: # ClashX Premium features
     path: ./derek.yaml
 
 rules:
-- GEOIP,CN,DIRECT
 - RULE-SET,derek,🌐 非亚洲
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
 {{ remoteSnippets.cn.main('DIRECT') | clash}}
