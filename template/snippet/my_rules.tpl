@@ -42,18 +42,18 @@ DOMAIN-SUFFIX,linkedin.com,{{ rule }}
 DOMAIN-SUFFIX,linkedin.cn,{{ rule }}
 DOMAIN-SUFFIX,rss-node.com,{{ rule }}
 DOMAIN-SUFFIX,amazonaws.com,{{ rule }}
-DOMAIN-SUFFIX,openai.com,{{ rule }}
 DOMAIN-SUFFIX,chatpdf.com,{{ rule }}
-DOMAIN-SUFFIX,bing.com,{{ rule }}
-DOMAIN-SUFFIX,bing.net,{{ rule }}
 DOMAIN-SUFFIX,poe.com,{{ rule }}
-DOMAIN-SUFFIX,techcrunch.com,{{ rule }}
 
 #美国节点
-DOMAIN-SUFFIX,www.puritan.com,{{ US_node }}
+DOMAIN-SUFFIX,puritan.com,{{ US_node }}
+DOMAIN-SUFFIX,openai.com,{{ US_node }}
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 DOMAIN-SUFFIX,remotasks.com,{{ US_node }}
 DOMAIN-SUFFIX,losadhwselfff2332dasd.xyz,{{ US_node }}
+DOMAIN-SUFFIX,bing.com,{{ US_node }}
+DOMAIN-SUFFIX,bing.net,{{ US_node }}
+DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
 
 #直连
 DOMAIN-SUFFIX,asus.com, DIRECT

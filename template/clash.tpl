@@ -185,41 +185,52 @@ proxies: {{ getClashNodes(nodeList) | json }}
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择
-  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度]
+  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
   url: {{ proxyTestUrl }}
   interval: 60
+  tolerance: 50
+- type: url-test
+  name: 🌐 非亚洲 # 针对封锁亚洲的情况
+  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
+  url: {{ proxyTestUrl }}
+  interval: 3600
   tolerance: 100
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
+  tolerance: 50
 - type: url-test
   name: 🇭🇰 HK
   proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 3600 #香港频率高一些
+  interval: 3600
   tolerance: 50
 - type: url-test
   name: 🇸🇬 SG
   proxies: {{ getClashNodeNames(nodeList, singaporeFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 36000
+  interval: 3600
+  tolerance: 100
 - type: url-test
   name: 🇯🇵 JP
   proxies: {{ getClashNodeNames(nodeList, japanFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 36000
+  interval: 3600
+  tolerance: 100
 - type: url-test
   name: 🇰🇷 KR
   proxies: {{ getClashNodeNames(nodeList, koreaFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
+  tolerance: 100
 - type: url-test
   name: 🇨🇳 TW
   proxies: {{ getClashNodeNames(nodeList, taiwanFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 36000
+  interval: 3600
+  tolerance: 100
 - type: url-test
   name: 🇬🇧 英国
   proxies: {{ getClashNodeNames(nodeList, customFilters.UKFilter) | json }}
@@ -235,11 +246,11 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, customFilters.INDFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
-#- type: url-test
-#  name: 🇨🇦 CA
-#  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
-#  url: {{ proxyTestUrl }}
-#  interval: 36000
+- type: url-test
+  name: 🇨🇦 CA
+  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 36000
 - type: select
   name: 🍎 Apple
   proxies:
@@ -249,7 +260,7 @@ proxy-groups:
   name: 🎬 Netflix
   proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 36000
+  interval: 3600
 
 rule-providers: # ClashX Premium features
   derek:
@@ -261,7 +272,7 @@ rule-providers: # ClashX Premium features
 
 rules:
 - GEOIP,CN,DIRECT
-- RULE-SET,derek,🚀 自动选择
+- RULE-SET,derek,🌐 非亚洲
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
 {{ remoteSnippets.cn.main('DIRECT') | clash}}
 {{ direct_rules.main('DIRECT') | clash }}
