@@ -28,6 +28,7 @@ DOMAIN-SUFFIX,wikipedia.org,{{ rule }}
 DOMAIN-SUFFIX,slack-edge.com,{{ rule }}
 DOMAIN-SUFFIX,onetravel.com,{{ rule }}
 DOMAIN-SUFFIX,githubusercontent.com,{{ rule }}
+DOMAIN-SUFFIX,jsdelivr.net,{{ rule }}
 DOMAIN-SUFFIX,ssrcloud.com,{{ rule }}
 DOMAIN-SUFFIX,netlify.app,{{ rule }}
 DOMAIN-SUFFIX,asuscomm.com,{{ rule }}
@@ -51,11 +52,13 @@ DOMAIN-SUFFIX,openai.com,{{ US_node }}
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 DOMAIN-SUFFIX,remotasks.com,{{ US_node }}
 DOMAIN-SUFFIX,losadhwselfff2332dasd.xyz,{{ US_node }}
+DOMAIN-SUFFIX,microsoftonline.com,{{ US_node }}
 DOMAIN-SUFFIX,bing.com,{{ US_node }}
 DOMAIN-SUFFIX,bing.net,{{ US_node }}
 DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
 
 #直连
+GEOIP,CN,DIRECT
 DOMAIN-SUFFIX,asus.com, DIRECT
 DOMAIN-SUFFIX,acl4ssr,DIRECT
 DOMAIN-SUFFIX,ip6-localhost,DIRECT
