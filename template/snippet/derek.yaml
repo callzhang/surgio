@@ -1,5 +1,7 @@
 payload:
   - DOMAIN-SUFFIX,techcrunch.com
+  - DOMAIN,ad.com
   - DOMAIN-SUFFIX,medium.com
   - DOMAIN-SUFFIX,discord.com
   - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,okx.com
