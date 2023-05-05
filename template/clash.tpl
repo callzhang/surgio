@@ -118,38 +118,45 @@ dns:
 
   # These nameservers are used to resolve the DNS nameserver hostnames below.
   # Specify IP addresses only
-  default-nameserver:
-    - 114.114.114.114
-    - 8.8.8.8
+  # default-nameserver:
+  #  - 8.8.8.8
+  #  - 114.114.114.114
   enhanced-mode: fake-ip # or redir-host (not recommended)
   fake-ip-range: 198.18.0.1/16 # Fake IP addresses pool CIDR
   # use-hosts: true # lookup hosts and return IP record
   
   # Hostnames in this list will not be resolved with fake IPs
-  # i.e. questions to these domain names will always be answered with their
-  # real IP addresses
-  # fake-ip-filter:
-  #   - '*.lan'
-  #   - localhost.ptlogin2.qq.com
+  # i.e. questions to these domain names will always be answered with their real IP addresses
+  fake-ip-filter:
+    - '*.lan'
+    - localhost
   
   # Supports UDP, TCP, DoT, DoH. You can specify the port to connect to.
   # All DNS questions are sent directly to the nameserver, without proxies
   # involved. Clash answers the DNS question with the first result gathered.
   nameserver:
-    - 114.114.114.114 # default value
-    - 8.8.8.8 # default value
-    - tls://dns.rubyfish.cn:853 # DNS over TLS
-    - https://1.1.1.1/dns-query # DNS over HTTPS
+    - 114.114.114.114 # 电信
+    - 223.5.5.5 # 阿里云
+    - 119.29.29.29 # 腾讯云
     - dhcp://en0 # dns from dhcp
-    # - '8.8.8.8#en0'
 
   # When `fallback` is present, the DNS server will send concurrent requests
   # to the servers in this section along with servers in `nameservers`.
   # The answers from fallback servers are used when the GEOIP country
   # is not `CN`.
-  # fallback:
-  #   - tcp://1.1.1.1
-  #   - 'tcp://1.1.1.1#en0'
+  fallback:
+    - tcp://1.1.1.1
+    - https://doh.buzz:8000/dns-query
+    - https://doh.beauty:8000/dns-query
+    - https://cloudflare-dns.com/dns-query
+    - tls://1.1.1.1:853
+    - tls://1.0.0.1:853
+    - https://1.1.1.1/dns-query
+    - https://1.0.0.1/dns-query
+    - tls://8.8.8.8:853
+    - tls://8.8.4.4:853
+    - https://dns.google/dns-query
+    - https://dns.twnic.tw/dns-query
 
   # If IP addresses resolved with servers in `nameservers` are in the specified
   # subnets below, they are considered invalid and results from `fallback`
@@ -171,27 +178,31 @@ dns:
       - '+.google.com'
       - '+.facebook.com'
       - '+.youtube.com'
+      - '+.bing.cn'
+      - '+.bing.com'
+      - '+.openai.com'
   
   # Lookup domains via specific nameservers
-  # nameserver-policy:
-  #   'www.baidu.com': '114.114.114.114'
-  #   '+.internal.crop.com': '10.0.0.1'
+  nameserver-policy:
+    '+.openai.com': '8.8.8.8'
+    '+.bing.com': '8.8.8.8'
 {% endif %}
 
 #-------------------#
 
-proxies: {{ getClashNodes(nodeList) | json }}
+proxies: 
+{{ getClashNodes(nodeList) | yaml }}
 
 proxy-groups:
 - type: url-test
-  name: 🚀 自动选择
-  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
+  name: 🚀 自动选择 # 选择最快的代理组
+  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
   url: {{ proxyTestUrl }}
   interval: 60
   tolerance: 50
 - type: url-test
   name: 🌐 非亚洲 # 针对封锁亚洲的情况
-  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA]
+  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇨🇦 CA, 🇯🇵 JP]
   url: {{ proxyTestUrl }}
   interval: 3600
   tolerance: 100
@@ -259,6 +270,11 @@ proxy-groups:
 - type: url-test
   name: 🎬 Netflix
   proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 3600
+- type: url-test
+  name: 📌 Free
+  proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
 

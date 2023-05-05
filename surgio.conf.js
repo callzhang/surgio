@@ -1,10 +1,7 @@
 'use strict';
 
 const { utils } = require('surgio');
-const SSRCloud1 = require('./provider/SSRCloud1');//Derek
-const SSRCloud2 = require('./provider/SSRCloud2');//Jia
-const SSRCloud3 = require('./provider/SSRCloud3');//Jia
-const dler = require('./provider/dler');//zitao
+
 
 // const uuid = require('crypto').randomUUID();
 const uuid = 'cd14ef8e-be91-487d-801e-aa6df828cc7a';
@@ -61,6 +58,8 @@ module.exports = {
     INDFilter: nodeConfig => nodeConfig.nodeName.includes('印度'),
     RSFilter: nodeConfig => nodeConfig.nodeName.includes('俄罗斯'),
     CAFilter: nodeConfig => nodeConfig.nodeName.includes('加拿大'),
+    GEFilter: utils.useKeywords(['德国']),
+    FreeFilter: utils.useKeywords(['免费', 'Free', '应急']),
   },
 
   artifacts: [
@@ -70,8 +69,8 @@ module.exports = {
     {
       name: `stardust_${uuid}.yaml`,
       template: 'clash',
-      provider: 'stardust',
-      combineProviders: ['hitun'],
+      provider: 'hitun',
+      combineProviders: ['stardust', 'ikuuu'],
       customParams: {
         dns: true,
       }
