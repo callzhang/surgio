@@ -198,13 +198,13 @@ proxy-groups:
   name: 🚀 自动选择 # 选择最快的代理组
   proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
   url: {{ proxyTestUrl }}
-  interval: 60
+  interval: 600
   tolerance: 50
 - type: url-test
-  name: 🌐 非亚洲 # 针对封锁亚洲的情况
-  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇨🇦 CA, 🇯🇵 JP]
-  url: {{ proxyTestUrl }}
-  interval: 3600
+  name: 🌐 ChatGPT # 针对封锁亚洲的情况
+  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇨🇦 CA, 🇯🇵 JP, 🇩🇪 德国]
+  url: https://chat.openai.com/
+  interval: 600
   tolerance: 100
 - type: url-test
   name: 🇺🇸 US
@@ -277,17 +277,23 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
+- type: url-test
+  name: 🇩🇪 德国
+  proxies: {{ getClashNodeNames(nodeList, customFilters.GEFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 3600
 
 rule-providers: # ClashX Premium features
-  derek:
-    behavior: "domain"
+  ruleset:
+    behavior: "classical" # domain, ipcidr or classical
     type: http
-    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/derek.yaml"
+    format: 'yaml' # or 'text'
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
     interval: 3600
-    path: ./derek.yaml
+    path: ./ruleset.yaml
 
 rules:
-- RULE-SET,derek,🌐 非亚洲
+- RULE-SET,ruleset,🌐 ChatGPT
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
 {{ remoteSnippets.cn.main('DIRECT') | clash}}
 - GEOIP,CN,DIRECT
