@@ -70,7 +70,7 @@ module.exports = {
       name: `stardust_${uuid}.yaml`,
       template: 'clash',
       provider: 'hitun',
-      combineProviders: ['stardust', 'ikuuu'],
+      combineProviders: ['stardust', 'ikuuu', 'riolu'],
       customParams: {
         dns: true,
       }

@@ -207,6 +207,12 @@ proxy-groups:
   interval: 600
   tolerance: 100
 - type: url-test
+  name: 🌟 Contentful # 官网配置后台
+  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
+  url: https://api.contentful.com
+  interval: 3600
+  tolerance: 100
+- type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
   url: {{ proxyTestUrl }}

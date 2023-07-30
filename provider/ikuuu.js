@@ -10,5 +10,7 @@ module.exports = {
   addFlag: true,
   // nodeFilter: utils.discardKeywords(['地址','流量','时间','Free','官网','回国','用户','设定','限速', '游戏','低速']),
   tfo: true,
-  // startPort: 61200
+  renameNode: name => {
+    return name + '(ikuuu)';
+  },
 };

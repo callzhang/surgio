@@ -45,6 +45,20 @@ DOMAIN-SUFFIX,rss-node.com,{{ rule }}
 DOMAIN-SUFFIX,amazonaws.com,{{ rule }}
 DOMAIN-SUFFIX,chatpdf.com,{{ rule }}
 DOMAIN-SUFFIX,poe.com,{{ rule }}
+DIMAIN-SUFFIX,python.org,{{ rule }}
+DOMAIN-SUFFIX,scale.com,{{ rule }}
+DOMAIN-SUFFIX,scale.ai,{{ rule }}
+DOMAIN-SUFFIX,streamlit.io,{{ rule }}
+DOMAIN-SUFFIX,vercel.app,{{ rule }}
+DOMAIN-SUFFIX,reddit.com,{{ rule }}
+DOMAIN-SUFFIX,okx.com,{{ rule }}
+DOMAIN-SUFFIX,discord.com,{{ rule }}
+DOMAIN-SUFFIX,duckduckgo.com,{{ rule }}
+DOMAIN-SUFFIX,yts.mx,{{ rule }}
+
+# Telegram
+PROCESS-NAME,Telegram,{{ rule }}
+PROCESS-PATH,telegram,{{ rule }}
 
 #美国节点
 DOMAIN-SUFFIX,puritan.com,{{ US_node }}
@@ -52,10 +66,14 @@ DOMAIN-SUFFIX,openai.com,{{ US_node }}
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 DOMAIN-SUFFIX,remotasks.com,{{ US_node }}
 DOMAIN-SUFFIX,losadhwselfff2332dasd.xyz,{{ US_node }}
-DOMAIN-SUFFIX,microsoftonline.com,{{ US_node }}
-DOMAIN-SUFFIX,bing.com,{{ US_node }}
-DOMAIN-SUFFIX,bing.net,{{ US_node }}
+# DOMAIN-SUFFIX,microsoftonline.com,{{ US_node }}
+# DOMAIN-SUFFIX,bing.com,{{ US_node }}
+# DOMAIN-SUFFIX,bing.net,{{ US_node }}
 DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
+DOMAIN-SUFFIX,scale.com,{{ US_node }}
+DOMAIN-SUFFIX,scale.ai,{{ US_node }}
+DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
+DOMAIN-SUFFIX,medium.com,{{ US_node }}
 
 #直连
 GEOIP,CN,DIRECT
