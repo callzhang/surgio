@@ -91,6 +91,19 @@ cfw-tray-icon:
   default: https://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/icon_bw.ico          # 默认图标
   system-proxy-on: https://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/icon.ico   # 开启系统代理后图标
 
+tun:
+  enable: true
+  stack: system # or gvisor (for windows)
+  # dns-hijack: # DNS hijacking might result in a failure, if the system DNS is at a private IP address (since auto-route does not capture private network traffic).
+  #   - 8.8.8.8:53
+  #   - tcp://8.8.8.8:53
+  #   - any:53
+  #   - tcp://any:53
+  #   - 198.18.0.2:53 # for Windows, when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
+  auto-route: true # manage `ip route` and `ip rules`
+  auto-redir: true # manage nftable REDIRECT
+  auto-detect-interface: true # conflict with `interface-name`
+
 {% if customParams.dns %}
 # 1. clash DNS 请求逻辑：
 #   (1) 当访问一个域名时， nameserver 与 fallback 列表内的所有服务器并发请求，得到域名对应的 IP 地址。
@@ -268,6 +281,11 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
+- type: url-test
+  name: 🇩🇪 德国
+  proxies: {{ getClashNodeNames(nodeList, customFilters.GEFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 3600
 - type: select
   name: 🍎 Apple
   proxies:
@@ -283,34 +301,74 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
-- type: url-test
-  name: 🇩🇪 德国
-  proxies: {{ getClashNodeNames(nodeList, customFilters.GEFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 3600
 
 rule-providers: # ClashX Premium features
-  ruleset:
+  chatgpt:
     behavior: "classical" # domain, ipcidr or classical
     type: http
     format: 'yaml' # or 'text'
     url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
-    interval: 3600
-    path: ./ruleset.yaml
+    interval: 36000
+    path: ./chatgpt.yaml
+  gfwlist:
+    behavior: "classical"
+    type: http
+    format: 'text'
+    url: https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/
+    interval: 3600000
+    path: ./gfwlist.txt
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
 
 rules:
-- RULE-SET,ruleset,🌐 ChatGPT
+- RULE-SET,chatgpt,🌐 ChatGPT
+- RULE-SET,applications,DIRECT
+- RULE-SET,private,DIRECT
+- RULE-SET,reject,REJECT
+#--------------------------- my rules ---------------------------
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
+#--------------------------- cn direct ---------------------------
 {{ remoteSnippets.cn.main('DIRECT') | clash}}
 - GEOIP,CN,DIRECT
 {{ direct_rules.main('DIRECT') | clash }}
+# -------------------------- apple --------------------------
 {{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
+# -------------------------- netflix --------------------------
 {{ remoteSnippets.netflix.main('🎬 Netflix') | clash}}
-{{ youtube_rules.main('🚀 自动选择') | clash }}
-{{ us_rules.main('🇺🇸 US') | clash }}
-{{ blocked_rules.main('🚀 自动选择') | clash }}
-{{ remoteSnippets.telegram.main('🚀 自动选择') | clash }}
-{{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
+# -------------------------- telegram --------------------------
+- RULE-SET,telegramcidr,🚀 自动选择
+# -------------------------- gfwlist --------------------------
+# - RULE-SET,gfwlist,🚀 自动选择
+- RULE-SET,gfw,🚀 自动选择
 
 # LAN
 - DOMAIN-SUFFIX,local,DIRECT

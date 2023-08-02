@@ -15,11 +15,11 @@ module.exports = {
    * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
    */
   remoteSnippets: [
-    {
-      name: 'gfwlist',
-      // url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
-      url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
-    },
+    // {
+    //   name: 'gfwlist',
+    //   url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
+    //   // url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
+    // },
     {
       url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
       name: 'apple', // 模板中对应 remoteSnippets.apple
@@ -31,8 +31,7 @@ module.exports = {
     },
     {
       name: 'telegram', // 模板中对应 remoteSnippets.telegram
-      // url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
-      url: 'https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt'
+      url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/telegram.list'
     },
     {
       name: 'netflix', // 模板中对应 remoteSnippets.netflix
