@@ -55,6 +55,9 @@ DOMAIN-SUFFIX,okx.com,{{ rule }}
 DOMAIN-SUFFIX,discord.com,{{ rule }}
 DOMAIN-SUFFIX,duckduckgo.com,{{ rule }}
 DOMAIN-SUFFIX,yts.mx,{{ rule }}
+DOMAIN-SUFFIX,whimsical.com,{{ rule }}
+DOMAIN-SUFFIX,huggingface.co,{{ rule }}
+DOMAIN-SUFFIX,sentry.io,{{ rule }}
 
 # Telegram
 PROCESS-NAME,Telegram,{{ rule }}

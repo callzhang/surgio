@@ -13,6 +13,6 @@ module.exports = {
   tfo: true,
   startPort: 61100,
   renameNode: name => {
-    return name + '(hitun)';
+    return name + ' | hitun';
   },
 };

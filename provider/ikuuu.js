@@ -1,6 +1,8 @@
 'use strict';
 const { utils } = require('surgio');
 
+// https://ikuuu.art
+
 module.exports = {
   url: 'https://api.sub-100.one/link/9qAfmnYmJElkP96A?clash=3&extend=1',
   type: 'clash',
@@ -11,6 +13,6 @@ module.exports = {
   // nodeFilter: utils.discardKeywords(['地址','流量','时间','Free','官网','回国','用户','设定','限速', '游戏','低速']),
   tfo: true,
   renameNode: name => {
-    return name + '(ikuuu)';
+    return name + ' | ikuuu';
   },
 };

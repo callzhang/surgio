@@ -11,7 +11,7 @@
 port: 7890
 
 # Port of SOCKS5 proxy server on the local end
-socks-port: 7891
+# socks-port: 7891
 
 # Transparent proxy server port for Linux and macOS (Redirect TCP and TProxy UDP)
 redir-port: 7892
@@ -64,7 +64,7 @@ external-controller: 127.0.0.1:9090
 # secret: ""
 
 # fwmark on Linux only
-routing-mark: 6666
+# routing-mark: 6666
 
 # Static hosts for DNS server and connection establishment (like /etc/hosts)
 #
@@ -235,7 +235,7 @@ proxy-groups:
   name: 🇭🇰 HK
   proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 3600
+  interval: 600
   tolerance: 50
 - type: url-test
   name: 🇸🇬 SG
