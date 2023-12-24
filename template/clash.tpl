@@ -219,12 +219,12 @@ proxy-groups:
   url: https://chat.openai.com/
   interval: 600
   tolerance: 100
-- type: url-test
-  name: 🌟 Contentful # 官网配置后台
-  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
-  url: https://api.contentful.com
-  interval: 3600
-  tolerance: 100
+#- type: url-test
+#  name: 🌟 Contentful # 官网配置后台
+#  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
+#  url: https://api.contentful.com
+#  interval: 3600
+#  tolerance: 100
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
@@ -291,11 +291,11 @@ proxy-groups:
   proxies:
     - DIRECT
     - 🚀 自动选择
-- type: url-test
-  name: 🎬 Netflix
-  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 3600
+#- type: url-test
+#  name: 🎬 Netflix
+#  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+#  url: {{ proxyTestUrl }}
+#  interval: 3600
 - type: url-test
   name: 📌 Free
   proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
@@ -309,14 +309,14 @@ rule-providers: # ClashX Premium features
     format: 'yaml' # or 'text'
     url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
     interval: 36000
-    path: ./chatgpt.yaml
+    path: ./ruleset/chatgpt.yaml
   gfwlist:
     behavior: "classical"
     type: http
     format: 'text'
     url: https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/
     interval: 3600000
-    path: ./gfwlist.txt
+    path: ./ruleset/gfwlist.txt
   reject:
     type: http
     behavior: domain
@@ -347,6 +347,16 @@ rule-providers: # ClashX Premium features
     url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
     path: ./ruleset/applications.yaml
     interval: 86400
+  netflix:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/snapei/clash-pro-rules@release/netflix.txt"
+    path: ./ruleset/netflix.yaml
+  tiktok:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/snapei/clash-pro-rules@release/tiktok.txt"
+    path: ./ruleset/tiktok.yaml
 
 
 rules:
@@ -357,15 +367,12 @@ rules:
 #--------------------------- my rules ---------------------------
 {{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
 #--------------------------- cn direct ---------------------------
-{{ remoteSnippets.cn.main('DIRECT') | clash}}
 - GEOIP,CN,DIRECT
-{{ direct_rules.main('DIRECT') | clash }}
-# -------------------------- apple --------------------------
+# -------------------------- applications --------------------------
 {{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
-# -------------------------- netflix --------------------------
-{{ remoteSnippets.netflix.main('🎬 Netflix') | clash}}
-# -------------------------- telegram --------------------------
+- RULE-SET,netflix,🚀 自动选择
 - RULE-SET,telegramcidr,🚀 自动选择
+- RULE-SET,tiktok,🇺🇸 US
 # -------------------------- gfwlist --------------------------
 # - RULE-SET,gfwlist,🚀 自动选择
 - RULE-SET,gfw,🚀 自动选择

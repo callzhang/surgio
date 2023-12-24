@@ -58,6 +58,7 @@ DOMAIN-SUFFIX,yts.mx,{{ rule }}
 DOMAIN-SUFFIX,whimsical.com,{{ rule }}
 DOMAIN-SUFFIX,huggingface.co,{{ rule }}
 DOMAIN-SUFFIX,sentry.io,{{ rule }}
+DOMAIN-SUFFIX,contentful.com,{{ rule }}
 
 # Telegram
 PROCESS-NAME,Telegram,{{ rule }}

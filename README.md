@@ -45,3 +45,6 @@
     - 默认值: 43200000（12 小时）
 - SURGIO_PROVIDER_CACHE_MAXAGE
     - 默认值: 600000（10 分钟）
+
+# 其他
+如果遇到本地文件缺失，可以使用`npm install surgio`或者`npm update`来更新本地文件
