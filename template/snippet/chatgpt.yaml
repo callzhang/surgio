@@ -1,0 +1,13 @@
+payload:
+  - DOMAIN-SUFFIX,techcrunch.com
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,okx.com
+  - DOMAIN-SUFFIX,discord.com
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,microsoftonline.com
+  - DOMAIN-SUFFIX,live.com
+  - DOMAIN-SUFFIX,msn.cn
+  - DOMAIN-SUFFIX,reddit.com
+  - DOMAIN-SUFFIX,anthropic.com
+  - DOMAIN-SUFFIX,claude.ai
+  - DOMAIN-SUFFIX,character.ai

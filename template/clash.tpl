@@ -291,11 +291,6 @@ proxy-groups:
   proxies:
     - DIRECT
     - 🚀 自动选择
-#- type: url-test
-#  name: 🎬 Netflix
-#  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
-#  url: {{ proxyTestUrl }}
-#  interval: 3600
 - type: url-test
   name: 📌 Free
   proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
@@ -306,9 +301,16 @@ rule-providers: # ClashX Premium features
   chatgpt:
     behavior: "classical" # domain, ipcidr or classical
     type: http
-    format: 'yaml' # or 'text'
+    format: 'yaml' 
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/chatgpt.yaml"
+    interval: 3600
+    path: ./ruleset/chatgpt.yaml
+  ruleset:
+    behavior: "classical"
+    type: http
+    format: 'yaml'
     url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
-    interval: 36000
+    interval: 3600
     path: ./ruleset/chatgpt.yaml
   gfwlist:
     behavior: "classical"
@@ -361,6 +363,7 @@ rule-providers: # ClashX Premium features
 
 rules:
 - RULE-SET,chatgpt,🌐 ChatGPT
+- RULE-SET,ruleset,🚀 自动选择
 - RULE-SET,applications,DIRECT
 - RULE-SET,private,DIRECT
 - RULE-SET,reject,REJECT

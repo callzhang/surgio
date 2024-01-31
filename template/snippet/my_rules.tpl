@@ -70,9 +70,9 @@ DOMAIN-SUFFIX,openai.com,{{ US_node }}
 DOMAIN-SUFFIX,coinbase.com,{{ US_node }}
 DOMAIN-SUFFIX,remotasks.com,{{ US_node }}
 DOMAIN-SUFFIX,losadhwselfff2332dasd.xyz,{{ US_node }}
-# DOMAIN-SUFFIX,microsoftonline.com,{{ US_node }}
-# DOMAIN-SUFFIX,bing.com,{{ US_node }}
-# DOMAIN-SUFFIX,bing.net,{{ US_node }}
+DOMAIN-SUFFIX,microsoftonline.com,{{ US_node }}
+DOMAIN-SUFFIX,bing.com,{{ US_node }}
+DOMAIN-SUFFIX,bing.net,{{ US_node }}
 DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
 DOMAIN-SUFFIX,scale.com,{{ US_node }}
 DOMAIN-SUFFIX,scale.ai,{{ US_node }}
