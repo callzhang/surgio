@@ -22,7 +22,7 @@
     }
   ],
   "env": {
-    "SURGIO_NETWORK_RETRY": 2,
+    "SURGIO_NETWORK_RETRY": "2",
     "SURGIO_NETWORK_TIMEOUT": "30000"
   }
 }
