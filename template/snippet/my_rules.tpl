@@ -1,4 +1,4 @@
-{% macro main(rule, US_node) %}
+{% macro main(rule, US_node, direct) %}
 
 # Derek's Rules
 DOMAIN-SUFFIX,notion.so,{{ rule }}
@@ -59,6 +59,12 @@ DOMAIN-SUFFIX,whimsical.com,{{ rule }}
 DOMAIN-SUFFIX,huggingface.co,{{ rule }}
 DOMAIN-SUFFIX,sentry.io,{{ rule }}
 DOMAIN-SUFFIX,contentful.com,{{ rule }}
+
+# Analytics
+DOMAIN-SUFFIX,google-analytics.com,{{ rule }}
+DOMAIN-SUFFIX,googletagmanager.com,{{ rule }}
+DOMAIN-SUFFIX,googletagservices.com,{{ rule }}
+DOMAIN-SUFFIX,hm.baidu.com,{{ direct }}
 
 # Telegram
 PROCESS-NAME,Telegram,{{ rule }}

@@ -4,7 +4,7 @@ const { utils } = require('surgio');
 
 
 // const uuid = require('crypto').randomUUID();
-const uuid = 'cd14ef8e-be91-487d-801e-aa6df828cc7a';
+const uuid = '5b4d987c-4766-41b5-a87a-a6fbb4ea3e4d';
 
 /**
  * 使用文档：https://surgio.royli.dev/
@@ -69,7 +69,7 @@ module.exports = {
       name: `stardust_${uuid}.yaml`,
       template: 'clash',
       provider: 'hitun',
-      combineProviders: ['stardust', 'ikuuu', 'riolu'],
+      combineProviders: ['stardust', 'ikuuu', 'no626'],
       customParams: {
         dns: true,
       }
@@ -145,8 +145,8 @@ module.exports = {
     // 支持所有区域
     region: 'oss-cn-hangzhou',
     // 以下信息于阿里云控制台获得
-    accessKeyId: 'LTAIqeJAXS20WLqx',
-    accessKeySecret: 'dRlDUEdcWmFnsf4RkBoBujj2tIGyno',
+    accessKeyId: process.env.AK,
+    accessKeySecret: process.env.SK,
   },
   // 非常有限的报错信息收集
   analytics: true,

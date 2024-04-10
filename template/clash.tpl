@@ -366,9 +366,8 @@ rules:
 - RULE-SET,ruleset,🚀 自动选择
 - RULE-SET,applications,DIRECT
 - RULE-SET,private,DIRECT
-- RULE-SET,reject,REJECT
 #--------------------------- my rules ---------------------------
-{{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
+{{ my_rules.main('🚀 自动选择', '🇺🇸 US', 'DIRECT') | clash }}
 #--------------------------- cn direct ---------------------------
 - GEOIP,CN,DIRECT
 # -------------------------- applications --------------------------
@@ -378,6 +377,7 @@ rules:
 - RULE-SET,tiktok,🇺🇸 US
 # -------------------------- gfwlist --------------------------
 # - RULE-SET,gfwlist,🚀 自动选择
+- RULE-SET,reject,REJECT
 - RULE-SET,gfw,🚀 自动选择
 
 # LAN
