@@ -12,7 +12,7 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@surgio/gateway": "2.0.1",
+    "@surgio/gateway": "^2.2.0",
     "surgio": "^3.2.3"
   }
 }
