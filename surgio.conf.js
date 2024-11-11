@@ -58,7 +58,7 @@ module.exports = {
     RSFilter: nodeConfig => nodeConfig.nodeName.includes('俄罗斯'),
     CAFilter: nodeConfig => nodeConfig.nodeName.includes('加拿大'),
     GEFilter: utils.useKeywords(['德国']),
-    FreeFilter: utils.useKeywords(['免费', 'Free', '应急']),
+    FreeFilter: utils.useKeywords(['免费', 'Free', '应急', '剩余']),
   },
 
   artifacts: [
@@ -74,56 +74,6 @@ module.exports = {
         dns: true,
       }
     },
-
-    /**
-     * Quantumult
-     */
-    // {
-    //   name: 'Quantumult_rules.conf',
-    //   template: 'quantumult_rules',
-    //   provider: 'subscribe_demo',
-    // },
-    // {
-    //   name: 'Quantumult.conf',
-    //   template: 'quantumult',
-    //   provider: 'subscribe_demo',
-    // },
-    // {
-    //   // 给 Quantumult 提供订阅地址
-    //   name: 'Shadowsocks_subscribe.conf',
-    //   template: 'shadowsocks_subscribe',
-    //   provider: 'subscribe_demo',
-    // },
-
-    /**
-     * Quantumult X
-     */
-    // {
-    //   name: 'QuantumultX_rules.conf',
-    //   template: 'quantumultx_rules',
-    //   provider: 'demo',
-    // },
-    // {
-    //   name: 'QuantumultX.conf',
-    //   template: 'quantumultx',
-    //   provider: 'demo',
-    // },
-    // {
-    //   name: 'QuantumultX_subscribe_us.conf',
-    //   template: 'quantumultx_subscribe',
-    //   provider: 'demo',
-    //   customParams: {
-    //     magicVariable: utils.usFilter,
-    //   },
-    // },
-    // {
-    //   name: 'QuantumultX_subscribe_hk.conf',
-    //   template: 'quantumultx_subscribe',
-    //   provider: 'demo',
-    //   customParams: {
-    //     magicVariable: utils.hkFilter,
-    //   },
-    // },
   ],
   /**
    * 订阅地址的前缀部分，以 / 结尾
