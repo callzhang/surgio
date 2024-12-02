@@ -50,15 +50,16 @@ module.exports = {
     //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
     // }
   ],
-  
+
   customFilters: {
-    // hktFilter: utils.useKeywords(['hkt', 'HKT']),
-    UKFilter: nodeConfig => nodeConfig.nodeName.includes('英国'),
-    INDFilter: nodeConfig => nodeConfig.nodeName.includes('印度'),
-    RSFilter: nodeConfig => nodeConfig.nodeName.includes('俄罗斯'),
-    CAFilter: nodeConfig => nodeConfig.nodeName.includes('加拿大'),
-    GEFilter: utils.useKeywords(['德国']),
-    FreeFilter: utils.useKeywords(['免费', 'Free', '应急', '剩余']),
+    asianFilter: utils.useKeywords(['印度', 'Indian', '菲律宾', '越南', '马来西亚',]),
+    rowFilter: utils.useKeywords(['英国', '加拿大', '德国', '阿根廷', '土耳其', '澳大利亚', '法国', '乌克兰', '澳洲', '荷兰', '西班牙']),
+    RSFilter: utils.useKeywords(['俄罗斯', 'RS']),
+    HKFilter: utils.mergeFilters([utils.useKeywords(['香港', 'HK']), utils.discardKeywords(['免费', '游戏', ' 遊戲', 'Game'], false)], true),
+    JPFilter: utils.mergeFilters([utils.useKeywords(['日本', 'JP']), utils.discardKeywords(['免费', '游戏', ' 遊戲', 'Game'], false)], true),
+    otherFilter: utils.useKeywords(['免费', 'Free', '应急', '剩余', '游戏']),
+    ikuuuFilter: utils.useKeywords(['ikuuu']),
+    hitunFilter: utils.useKeywords(['hitun']),
   },
 
   artifacts: [

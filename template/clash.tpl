@@ -45,7 +45,7 @@ mode: rule
 
 # Clash by default prints logs to STDOUT
 # info / warning / error / debug / silent
-log-level: info
+log-level: warning
 
 # When set to false, resolver won't translate hostnames to IPv6 addresses
 ipv6: true
@@ -209,22 +209,16 @@ proxies:
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择 # 选择最快的代理组
-  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
+  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🌏 World]
   url: {{ proxyTestUrl }}
   interval: 600
   tolerance: 50
 - type: url-test
   name: 🌐 ChatGPT # 针对封锁亚洲的情况
-  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇨🇦 CA, 🇯🇵 JP, 🇩🇪 德国]
+  proxies: [🇺🇸 US, 🇯🇵 JP, 🌏 World]
   url: https://chat.openai.com/
   interval: 600
   tolerance: 100
-#- type: url-test
-#  name: 🌟 Contentful # 官网配置后台
-#  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
-#  url: https://api.contentful.com
-#  interval: 3600
-#  tolerance: 100
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
@@ -233,7 +227,7 @@ proxy-groups:
   tolerance: 50
 - type: url-test
   name: 🇭🇰 HK
-  proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
+  proxies: {{ getClashNodeNames(nodeList, customFilters.HKFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 600
   tolerance: 50
@@ -245,7 +239,7 @@ proxy-groups:
   tolerance: 100
 - type: url-test
   name: 🇯🇵 JP
-  proxies: {{ getClashNodeNames(nodeList, japanFilter) | json }}
+  proxies: {{ getClashNodeNames(nodeList, customFilters.JPFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
   tolerance: 100
@@ -262,41 +256,25 @@ proxy-groups:
   interval: 3600
   tolerance: 100
 - type: url-test
-  name: 🇬🇧 英国
-  proxies: {{ getClashNodeNames(nodeList, customFilters.UKFilter) | json }}
+  name: 🇮🇳 亚洲
+  proxies: {{ getClashNodeNames(nodeList, customFilters.asianFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
-- type: url-test
-  name: 🇷🇺 俄罗斯
-  proxies: {{ getClashNodeNames(nodeList, customFilters.RSFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
-- type: url-test
-  name: 🇮🇳 印度
-  proxies: {{ getClashNodeNames(nodeList, customFilters.INDFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
-- type: url-test
-  name: 🇨🇦 CA
-  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
-- type: url-test
-  name: 🇩🇪 德国
-  proxies: {{ getClashNodeNames(nodeList, customFilters.GEFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 3600
 - type: select
   name: 🍎 Apple
   proxies:
     - DIRECT
     - 🚀 自动选择
 - type: url-test
-  name: 📌 Free
-  proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
+  name: 🌏 World
+  proxies: {{ getClashNodeNames(nodeList, customFilters.rowFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
-
+- type: url-test
+  name: 📌 其他
+  proxies: {{ getClashNodeNames(nodeList, customFilters.otherFilter) | json }}
+  url: {{ proxyTestUrl }}
+  interval: 3600
 rule-providers: # ClashX Premium features
   chatgpt:
     behavior: "classical" # domain, ipcidr or classical

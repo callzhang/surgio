@@ -6,3 +6,4 @@ dist
 .vercel
 package-lock.json
 run_update.sh
+update.sh

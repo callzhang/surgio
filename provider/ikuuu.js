@@ -4,7 +4,7 @@ const { utils } = require('surgio');
 // https://ikuuu.art
 
 module.exports = {
-  url: 'https://api.sub-100.one/link/ZMOoNEXC8crj3cYe?clash=3&extend=1',
+  url: 'https://l1wn2.no-mad-world.club/link/ZMOoNEXC8crj3cYe?clash=3&extend=1',
   type: 'clash',
   // 定义所有的节点都支持 udpRelay
   udpRelay: true,

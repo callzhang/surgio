@@ -1,26 +1,5 @@
 {
-  "name": "my-rule-store",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "build": "npm install && npm run update",
-    "update": "surgio generate && surgio upload",
-    "start": "node server.js",
-    "lint": "eslint . --ext .js",
-    "format": "prettier --write ."
-  },
-  "engine": {
-    "node": ">=18"
-  },
   "dependencies": {
-    "@surgio/gateway": "^2.2.0",
-    "@vercel/analytics": "^1.2.2",
-    "surgio": "^3.2.3",
-    "typescript": "^5.0.0"
-  },
-  "description": "**名词定义** - 脚本：clash使用的脚本，即.yaml文件 - 模板：本工具使用生成脚本的模板，即.tpl文件 - 规则：clash科学上网的规则",
-  "main": "gateway.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+    "surgio": "^3.10.3"
+  }
 }
