@@ -8,7 +8,7 @@ module.exports = {
   udpRelay: true,
   // 添加国旗 emoji
   addFlag: true,
-  // nodeFilter: utils.discardKeywords(['地址','流量','时间','Free','官网','回国','用户','设定','限速', '游戏','低速']),
+  nodeFilter: utils.discardKeywords(['官网','回国','用户','设定','限速', '游戏','低速']),
   tfo: true,
   renameNode: name => {
     return name + ' | no626';

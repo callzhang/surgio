@@ -5,5 +5,5 @@ node_modules_
 dist
 .vercel
 package-lock.json
-run_update.sh
+package.json
 update.sh

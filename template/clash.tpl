@@ -340,6 +340,22 @@ rule-providers: # ClashX Premium features
 
 
 rules:
+# LAN
+- DOMAIN-SUFFIX,local,DIRECT
+- IP-CIDR,127.0.0.0/8,DIRECT
+- IP-CIDR,172.16.0.0/12,DIRECT
+- IP-CIDR,192.168.0.0/16,DIRECT
+- IP-CIDR,10.0.0.0/8,DIRECT
+- IP-CIDR,100.64.0.0/10,DIRECT
+
+# GEOSITE: https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file
+- GEOSITE, cn, DIRECT
+- GEOIP, CN, DIRECT
+- GEOSITE, ai, 🇺🇸 US
+- GEOSITE, tiktok, 🇺🇸 US
+- GEOSITE, ads, REJECT
+- GEOSITE, trackerslist, REJECT
+
 - RULE-SET,chatgpt,🌐 ChatGPT
 - RULE-SET,ruleset,🚀 自动选择
 - RULE-SET,applications,DIRECT
@@ -358,13 +374,6 @@ rules:
 - RULE-SET,reject,REJECT
 - RULE-SET,gfw,🚀 自动选择
 
-# LAN
-- DOMAIN-SUFFIX,local,DIRECT
-- IP-CIDR,127.0.0.0/8,DIRECT
-- IP-CIDR,172.16.0.0/12,DIRECT
-- IP-CIDR,192.168.0.0/16,DIRECT
-- IP-CIDR,10.0.0.0/8,DIRECT
-- IP-CIDR,100.64.0.0/10,DIRECT
 
 # Final
 - MATCH,DIRECT
