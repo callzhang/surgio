@@ -10,10 +10,10 @@
     "build": "npm install"
   },
   "dependencies": {
-    "@surgio/gateway": "*",
-    "dotenv": "^16.4.7",
-    "surgio": "*",
-    "typescript": "*"
+    "@surgio/gateway": "^2.2.0",
+    "@vercel/analytics": "^1.2.2",
+    "surgio": "^3.2.3",
+    "typescript": "^5.0.0"
   },
   "engines": {
     "node": ">=18"
