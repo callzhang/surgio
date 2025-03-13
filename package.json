@@ -1,7 +1,10 @@
 {
   "dependencies": {
-    "surgio": "^3.10.6",
-    "@surgio/gateway": "^1.0.0",
-    "typescript": "^4.0.0"
+    "surgio": "*",
+    "@surgio/gateway": "*",
+    "typescript": "*"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
