@@ -10,14 +10,10 @@ const uuid = '5b4d987c-4766-41b5-a87a-a6fbb4ea3e4d';
  * 使用文档：https://surgio.royli.dev/
  */
 module.exports = {
-  cache: {
-    type: 'redis',
-    redisUrl: process.env.REDIS_URL,
-  },
-  /**
-   * 远程片段
-   * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
-   */
+  // cache: {
+  //   type: 'redis',
+  //   redisUrl: process.env.REDIS_URL,
+  // },
   remoteSnippets: [
     // {
     //   name: 'gfwlist',
@@ -29,30 +25,6 @@ module.exports = {
       name: 'apple', // 模板中对应 remoteSnippets.apple
       surgioSnippet: true
     },
-    // {
-    //   name: 'cn', //比较精简的代理列表，包含常用的，以及被污染的域名
-    //   url: 'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/CN.yaml'
-    // },
-    // {
-    //   name: 'telegram', // 模板中对应 remoteSnippets.telegram
-    //   url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/telegram.list'
-    // },
-    // {
-    //   name: 'netflix', // 模板中对应 remoteSnippets.netflix
-    //   url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/netflix.list'
-    // },
-    // {
-    //   name: 'hbo', // 模板中对应 remoteSnippets.hbo
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/HBO.list'
-    // },
-    // {
-    //   name: 'hulu', // 模板中对应 remoteSnippets.hulu
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Hulu.list'
-    // },
-    // {
-    //   name: 'paypal', // 模板中对应 remoteSnippets.paypal
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
-    // }
   ],
 
   customFilters: {

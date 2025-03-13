@@ -1,7 +1,17 @@
 {
+  "name": "my_surguo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "update": "surgio generate && surgio upload",
+    "start": "node server.js",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write ."
+  },
   "dependencies": {
-    "surgio": "*",
     "@surgio/gateway": "*",
+    "dotenv": "^16.4.7",
+    "surgio": "*",
     "typescript": "*"
   },
   "engines": {
