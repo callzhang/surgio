@@ -6,7 +6,8 @@
     "update": "surgio generate && surgio upload",
     "start": "node server.js",
     "lint": "eslint . --ext .js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "build": "npm install"
   },
   "dependencies": {
     "@surgio/gateway": "*",
