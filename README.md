@@ -1,4 +1,5 @@
 # Stardust科学上网Clash脚本生成器
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b1007d37-183e-4e01-b5d5-798bd555a58c/deploy-status)](https://app.netlify.com/sites/surgio/deploys)
 
 **名词定义**
 - 脚本：clash使用的脚本，即.yaml文件

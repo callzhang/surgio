@@ -10,6 +10,10 @@ const uuid = '5b4d987c-4766-41b5-a87a-a6fbb4ea3e4d';
  * 使用文档：https://surgio.royli.dev/
  */
 module.exports = {
+  cache: {
+    type: 'redis',
+    redisUrl: process.env.REDIS_URL,
+  },
   /**
    * 远程片段
    * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
@@ -80,7 +84,8 @@ module.exports = {
    * 订阅地址的前缀部分，以 / 结尾
    * 例如阿里云 OSS 的访问地址 https://xxx.oss-cn-hangzhou.aliyuncs.com/
    */
-  urlBase: 'https://surgio-sandy.vercel.app/get-artifact/',
+  // urlBase: 'https://surgio-sandy.vercel.app/get-artifact/',
+  urlBase: 'https://surgio.netlify.app/get-artifact/',
   surgeConfig: {
     v2ray: 'native',
   },
