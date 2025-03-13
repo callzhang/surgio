@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "surgio": "^3.10.3"
+    "surgio": "^3.10.6",
+    "@surgio/gateway": "^1.0.0"
   }
 }

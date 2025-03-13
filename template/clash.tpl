@@ -337,7 +337,14 @@ rule-providers: # ClashX Premium features
     behavior: domain
     url: "https://cdn.jsdelivr.net/gh/snapei/clash-pro-rules@release/tiktok.txt"
     path: ./ruleset/tiktok.yaml
-
+    interval: 86400
+  ai:
+    type: http
+    behavior: domain
+    format: mrs
+    path: ./ruleset/ai.mrs
+    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
+    interval: 86400
 
 rules:
 # LAN
@@ -347,15 +354,16 @@ rules:
 - IP-CIDR,192.168.0.0/16,DIRECT
 - IP-CIDR,10.0.0.0/8,DIRECT
 - IP-CIDR,100.64.0.0/10,DIRECT
+- GEOIP, CN, DIRECT
 
 # GEOSITE: https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file
-- GEOSITE, cn, DIRECT
-- GEOIP, CN, DIRECT
-- GEOSITE, ai, 🇺🇸 US
-- GEOSITE, tiktok, 🇺🇸 US
-- GEOSITE, ads, REJECT
-- GEOSITE, trackerslist, REJECT
+#- GEOSITE, cn, DIRECT
+#- GEOSITE, ai, 🇺🇸 US
+#- GEOSITE, tiktok, 🇺🇸 US
+#- GEOSITE, ads, REJECT
+#- GEOSITE, trackerslist, REJECT
 
+- RULE-SET,ai,🇺🇸 US
 - RULE-SET,chatgpt,🌐 ChatGPT
 - RULE-SET,ruleset,🚀 自动选择
 - RULE-SET,applications,DIRECT
