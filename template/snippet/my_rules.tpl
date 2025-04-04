@@ -59,6 +59,8 @@ DOMAIN-SUFFIX,whimsical.com,{{ rule }}
 DOMAIN-SUFFIX,huggingface.co,{{ rule }}
 DOMAIN-SUFFIX,sentry.io,{{ rule }}
 DOMAIN-SUFFIX,contentful.com,{{ rule }}
+DOMAIN-SUFFIX,bing.com,{{ rule }}
+DOMAIN-SUFFIX,okx.com,{{ rule }}
 
 # Analytics
 DOMAIN-SUFFIX,google-analytics.com,{{ rule }}
@@ -84,33 +86,11 @@ DOMAIN-SUFFIX,scale.com,{{ US_node }}
 DOMAIN-SUFFIX,scale.ai,{{ US_node }}
 DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
 DOMAIN-SUFFIX,medium.com,{{ US_node }}
+DOMAIN-SUFFIX,techcrunch.com,{{ US_node }}
+DOMAIN-SUFFIX,discord.com,{{ US_node }}
+DOMAIN-SUFFIX,microsoftonline.com,{{ US_node }}
+DOMAIN-SUFFIX,live.com,{{ US_node }}
+DOMAIN-SUFFIX,msn.cn,{{ US_node }}
+DOMAIN-SUFFIX,reddit.com,{{ US_node }}
 
-#直连
-GEOIP,CN,DIRECT
-DOMAIN-SUFFIX,asus.com, DIRECT
-DOMAIN-SUFFIX,acl4ssr,DIRECT
-DOMAIN-SUFFIX,ip6-localhost,DIRECT
-DOMAIN-SUFFIX,ip6-loopback,DIRECT
-DOMAIN-SUFFIX,local,DIRECT
-DOMAIN-SUFFIX,localhost,DIRECT
-DOMAIN,router.asus.com,DIRECT
-DOMAIN-SUFFIX,hiwifi.com,DIRECT
-DOMAIN-SUFFIX,leike.cc,DIRECT
-DOMAIN-SUFFIX,miwifi.com,DIRECT
-DOMAIN-SUFFIX,my.router,DIRECT
-DOMAIN-SUFFIX,p.to,DIRECT
-DOMAIN-SUFFIX,peiluyou.com,DIRECT
-DOMAIN-SUFFIX,phicomm.me,DIRECT
-DOMAIN-SUFFIX,routerlogin.com,DIRECT
-DOMAIN-SUFFIX,tendawifi.com,DIRECT
-DOMAIN-SUFFIX,zte.home,DIRECT
-IP-CIDR,10.0.0.0/8,DIRECT
-IP-CIDR,100.64.0.0/10,DIRECT
-IP-CIDR,127.0.0.0/8,DIRECT
-IP-CIDR,172.16.0.0/12,DIRECT
-IP-CIDR,192.168.0.0/16,DIRECT
-IP-CIDR6,::1/128,DIRECT
-IP-CIDR6,fc00::/7,DIRECT
-IP-CIDR6,fe80::/10,DIRECT
-IP-CIDR6,fd00::/8,DIRECT
 {% endmacro %}

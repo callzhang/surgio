@@ -6,3 +6,95 @@ payload:
   - DOMAIN-SUFFIX,duckduckgo.com
   - DOMAIN-SUFFIX,medium.com
   - DOMAIN-SUFFIX,discord.com
+# Derek's Rules
+  - DOMAIN-SUFFIX,notion.so
+  - DOMAIN-SUFFIX,dler.cloud
+  - DOMAIN-KEYWORD,slack
+  - DOMAIN-KEYWORD,adobe
+  - DOMAIN-KEYWORD,hitun
+  - DOMAIN-SUFFIX,github.io
+  - DOMAIN-SUFFIX,gitlab.com
+  - DOMAIN-SUFFIX,github.com
+  - DOMAIN-SUFFIX,gitlab-static.net
+  - DOMAIN-SUFFIX,okex.com
+  - DOMAIN-SUFFIX,ign.com
+  - DOMAIN-SUFFIX,arxiv.org
+  - DOMAIN-SUFFIX,cryptobriefing.com
+  - DOMAIN-SUFFIX,ethereum.org
+  - DOMAIN-SUFFIX,slack.com
+  - DOMAIN-SUFFIX,slack-msgs.com
+  - DOMAIN-SUFFIX,gstatic.com
+  - DOMAIN-SUFFIX,slack-imgs.com
+  - DOMAIN-SUFFIX,googleapis.com
+  - DOMAIN-SUFFIX,googleusercontent.com
+  - DOMAIN-SUFFIX,kaggle.com
+  - DOMAIN-SUFFIX,stanford.edu
+  - DOMAIN-SUFFIX,cloudfunctions.net
+  - DOMAIN-SUFFIX,wikipedia.org
+  - DOMAIN-SUFFIX,slack-edge.com
+  - DOMAIN-SUFFIX,onetravel.com
+  - DOMAIN-SUFFIX,githubusercontent.com
+  - DOMAIN-SUFFIX,jsdelivr.net
+  - DOMAIN-SUFFIX,ssrcloud.com
+  - DOMAIN-SUFFIX,netlify.app
+  - DOMAIN-SUFFIX,asuscomm.com
+  - DOMAIN-SUFFIX,curiositystream.com
+  - DOMAIN-SUFFIX,cvlibs.net
+  - DOMAIN-SUFFIX,dler.cloud
+  - DOMAIN-SUFFIX,whimsical.com
+  - DOMAIN-SUFFIX,producthunt.com
+  - DOMAIN-SUFFIX,kosy.onlin
+  - DOMAIN-SUFFIX,kosyoffice.com
+  - DOMAIN-SUFFIX,linkedin.com
+  - DOMAIN-SUFFIX,linkedin.cn
+  - DOMAIN-SUFFIX,rss-node.com
+  - DOMAIN-SUFFIX,amazonaws.com
+  - DOMAIN-SUFFIX,chatpdf.com
+  - DOMAIN-SUFFIX,poe.com
+  - DIMAIN-SUFFIX,python.org
+  - DOMAIN-SUFFIX,scale.com
+  - DOMAIN-SUFFIX,scale.ai
+  - DOMAIN-SUFFIX,streamlit.io
+  - DOMAIN-SUFFIX,vercel.app
+  - DOMAIN-SUFFIX,reddit.com
+  - DOMAIN-SUFFIX,okx.com
+  - DOMAIN-SUFFIX,discord.com
+  - DOMAIN-SUFFIX,duckduckgo.com
+  - DOMAIN-SUFFIX,yts.mx
+  - DOMAIN-SUFFIX,whimsical.com
+  - DOMAIN-SUFFIX,huggingface.co
+  - DOMAIN-SUFFIX,sentry.io
+  - DOMAIN-SUFFIX,contentful.com
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,okx.com
+
+# Analytics
+  - DOMAIN-SUFFIX,google-analytics.com
+  - DOMAIN-SUFFIX,googletagmanager.com
+  - DOMAIN-SUFFIX,googletagservices.com
+  - DOMAIN-SUFFIX,hm.baidu.com
+
+# Telegram
+  - PROCESS-NAME,Telegram
+  - PROCESS-PATH,telegram
+
+#美国节点
+  - DOMAIN-SUFFIX,puritan.com
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,coinbase.com
+  - DOMAIN-SUFFIX,remotasks.com
+  - DOMAIN-SUFFIX,losadhwselfff2332dasd.xyz
+  - DOMAIN-SUFFIX,microsoftonline.com
+  - DOMAIN-SUFFIX,bing.com
+  - DOMAIN-SUFFIX,bing.net
+  - DOMAIN-SUFFIX,techcrunch.com
+  - DOMAIN-SUFFIX,scale.com
+  - DOMAIN-SUFFIX,scale.ai
+  - DOMAIN-SUFFIX,techcrunch.com
+  - DOMAIN-SUFFIX,medium.com
+  - DOMAIN-SUFFIX,techcrunch.com
+  - DOMAIN-SUFFIX,discord.com
+  - DOMAIN-SUFFIX,microsoftonline.com
+  - DOMAIN-SUFFIX,live.com
+  - DOMAIN-SUFFIX,msn.cn
+  - DOMAIN-SUFFIX,reddit.com

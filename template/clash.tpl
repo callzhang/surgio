@@ -1,9 +1,9 @@
-{% import './snippet/my_rules.tpl' as my_rules %}
-{% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/apple_rules.tpl' as apple_rules %}
-{% import './snippet/youtube_rules.tpl' as youtube_rules %}
-{% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/blocked_rules.tpl' as blocked_rules %}
+#{% import './snippet/my_rules.tpl' as my_rules %}
+#{% import './snippet/direct_rules.tpl' as direct_rules %}
+#{% import './snippet/apple_rules.tpl' as apple_rules %}
+#{% import './snippet/youtube_rules.tpl' as youtube_rules %}
+#{% import './snippet/us_rules.tpl' as us_rules %}
+#{% import './snippet/blocked_rules.tpl' as blocked_rules %}
 
 # {{ downloadUrl }}
 
@@ -279,21 +279,21 @@ rule-providers: # ClashX Premium features
   chatgpt:
     behavior: "classical" # domain, ipcidr or classical
     type: http
-    format: 'yaml' 
+    format: yaml
     url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/chatgpt.yaml"
     interval: 3600
     path: ./ruleset/chatgpt.yaml
   ruleset:
     behavior: "classical"
     type: http
-    format: 'yaml'
+    format: yaml
     url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
     interval: 3600
     path: ./ruleset/chatgpt.yaml
   gfwlist:
     behavior: "classical"
     type: http
-    format: 'text'
+    format: text
     url: https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/
     interval: 3600000
     path: ./ruleset/gfwlist.txt
@@ -341,39 +341,54 @@ rule-providers: # ClashX Premium features
   ai:
     type: http
     behavior: domain
-    format: mrs
-    path: ./ruleset/ai.mrs
-    url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
+    #format: mrs
+    format: text
+    #path: ./ruleset/ai.mrs
+    path: ./ruleset/ai.txt
+    #url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
+    url: "https://gist.githubusercontent.com/sarices/017da597ae6b28063bbdd52693d78385/raw/d2ea246002a94e5ad7486ec96586c6e63500330e/ai.list"
     interval: 86400
 
 rules:
-# LAN
+#--------------------------- direct ---------------------------
+- GEOIP,CN,DIRECT
+- GEOIP, CN, DIRECT
 - DOMAIN-SUFFIX,local,DIRECT
 - IP-CIDR,127.0.0.0/8,DIRECT
 - IP-CIDR,172.16.0.0/12,DIRECT
 - IP-CIDR,192.168.0.0/16,DIRECT
 - IP-CIDR,10.0.0.0/8,DIRECT
 - IP-CIDR,100.64.0.0/10,DIRECT
-- GEOIP, CN, DIRECT
-
-# GEOSITE: https://github.com/DustinWin/ruleset_geodata?tab=readme-ov-file
-#- GEOSITE, cn, DIRECT
-#- GEOSITE, ai, 🇺🇸 US
-#- GEOSITE, tiktok, 🇺🇸 US
-#- GEOSITE, ads, REJECT
-#- GEOSITE, trackerslist, REJECT
-
-- RULE-SET,ai,🇺🇸 US
-- RULE-SET,chatgpt,🌐 ChatGPT
-- RULE-SET,ruleset,🚀 自动选择
+- IP-CIDR6,::1/128,DIRECT
+- IP-CIDR6,fc00::/7,DIRECT
+- IP-CIDR6,fe80::/10,DIRECT
+- IP-CIDR6,fd00::/8,DIRECT
+- DOMAIN-SUFFIX,asus.com, DIRECT
+- DOMAIN-SUFFIX,acl4ssr,DIRECT
+- DOMAIN-SUFFIX,ip6-localhost,DIRECT
+- DOMAIN-SUFFIX,ip6-loopback,DIRECT
+- DOMAIN-SUFFIX,local,DIRECT
+- DOMAIN-SUFFIX,localhost,DIRECT
+- DOMAIN,router.asus.com,DIRECT
+- DOMAIN-SUFFIX,hiwifi.com,DIRECT
+- DOMAIN-SUFFIX,leike.cc,DIRECT
+- DOMAIN-SUFFIX,miwifi.com,DIRECT
+- DOMAIN-SUFFIX,my.router,DIRECT
+- DOMAIN-SUFFIX,p.to,DIRECT
+- DOMAIN-SUFFIX,peiluyou.com,DIRECT
+- DOMAIN-SUFFIX,phicomm.me,DIRECT
+- DOMAIN-SUFFIX,routerlogin.com,DIRECT
+- DOMAIN-SUFFIX,tendawifi.com,DIRECT
+- DOMAIN-SUFFIX,zte.home,DIRECT
 - RULE-SET,applications,DIRECT
 - RULE-SET,private,DIRECT
-#--------------------------- my rules ---------------------------
-{{ my_rules.main('🚀 自动选择', '🇺🇸 US', 'DIRECT') | clash }}
-#--------------------------- cn direct ---------------------------
-- GEOIP,CN,DIRECT
+# -------------------------- AI --------------------------
+- RULE-SET,ai,🇺🇸 US
+- RULE-SET,chatgpt,🇺🇸 US
+# -------------------------- custom rules --------------------------
+- RULE-SET,ruleset,🚀 自动选择
+#{{ my_rules.main('🚀 自动选择', '🇺🇸 US', 'DIRECT') | clash }}
 # -------------------------- applications --------------------------
-{{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
 - RULE-SET,netflix,🚀 自动选择
 - RULE-SET,telegramcidr,🚀 自动选择
 - RULE-SET,tiktok,🇺🇸 US
@@ -381,7 +396,6 @@ rules:
 # - RULE-SET,gfwlist,🚀 自动选择
 - RULE-SET,reject,REJECT
 - RULE-SET,gfw,🚀 自动选择
-
 
 # Final
 - MATCH,DIRECT
