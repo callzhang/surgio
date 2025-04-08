@@ -6,6 +6,10 @@ payload:
   - DOMAIN-SUFFIX,duckduckgo.com
   - DOMAIN-SUFFIX,medium.com
   - DOMAIN-SUFFIX,discord.com
+# US rules
+  - DOMAIN-SUFFIX,linkedin.com
+  - DOMAIN-SUFFIX,reddit.com
+  - DOMAIN-SUFFIX,luminarypodcasts.com
 # Derek's Rules
   - DOMAIN-SUFFIX,notion.so
   - DOMAIN-SUFFIX,dler.cloud
@@ -45,8 +49,6 @@ payload:
   - DOMAIN-SUFFIX,producthunt.com
   - DOMAIN-SUFFIX,kosy.onlin
   - DOMAIN-SUFFIX,kosyoffice.com
-  - DOMAIN-SUFFIX,linkedin.com
-  - DOMAIN-SUFFIX,linkedin.cn
   - DOMAIN-SUFFIX,rss-node.com
   - DOMAIN-SUFFIX,amazonaws.com
   - DOMAIN-SUFFIX,chatpdf.com
@@ -56,7 +58,6 @@ payload:
   - DOMAIN-SUFFIX,scale.ai
   - DOMAIN-SUFFIX,streamlit.io
   - DOMAIN-SUFFIX,vercel.app
-  - DOMAIN-SUFFIX,reddit.com
   - DOMAIN-SUFFIX,okx.com
   - DOMAIN-SUFFIX,discord.com
   - DOMAIN-SUFFIX,duckduckgo.com
@@ -66,7 +67,6 @@ payload:
   - DOMAIN-SUFFIX,sentry.io
   - DOMAIN-SUFFIX,contentful.com
   - DOMAIN-SUFFIX,bing.com
-  - DOMAIN-SUFFIX,okx.com
 
 # Analytics
   - DOMAIN-SUFFIX,google-analytics.com

@@ -1,10 +1,3 @@
-#{% import './snippet/my_rules.tpl' as my_rules %}
-#{% import './snippet/direct_rules.tpl' as direct_rules %}
-#{% import './snippet/apple_rules.tpl' as apple_rules %}
-#{% import './snippet/youtube_rules.tpl' as youtube_rules %}
-#{% import './snippet/us_rules.tpl' as us_rules %}
-#{% import './snippet/blocked_rules.tpl' as blocked_rules %}
-
 # {{ downloadUrl }}
 
 # Port of HTTP(S) proxy server on the local end
@@ -214,8 +207,8 @@ proxy-groups:
   interval: 600
   tolerance: 50
 - type: url-test
-  name: 🌐 ChatGPT # 针对封锁亚洲的情况
-  proxies: [🇺🇸 US, 🇯🇵 JP, 🌏 World]
+  name: 🌐 AI # 针对封锁亚洲的情况
+  proxies: [🇺🇸 US, 🌏 World]
   url: https://chat.openai.com/
   interval: 600
   tolerance: 100
@@ -275,21 +268,29 @@ proxy-groups:
   proxies: {{ getClashNodeNames(nodeList, customFilters.otherFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
+
 rule-providers: # ClashX Premium features
-  chatgpt:
+  my_ai:
     behavior: "classical" # domain, ipcidr or classical
     type: http
     format: yaml
-    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/chatgpt.yaml"
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/my_ai.yaml"
     interval: 3600
-    path: ./ruleset/chatgpt.yaml
+    path: ./ruleset/my_ai.yaml
   ruleset:
     behavior: "classical"
     type: http
     format: yaml
     url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
     interval: 3600
-    path: ./ruleset/chatgpt.yaml
+    path: ./ruleset/ruleset.yaml
+  us_rules:
+    behavior: "classical"
+    type: http
+    format: yaml
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/us_rules.yaml"
+    interval: 3600
+    path: ./ruleset/us_rules.yaml
   gfwlist:
     behavior: "classical"
     type: http
@@ -344,15 +345,20 @@ rule-providers: # ClashX Premium features
     #format: mrs
     format: text
     #path: ./ruleset/ai.mrs
-    path: ./ruleset/ai.txt
     #url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
+    path: ./ruleset/ai.list
     url: "https://gist.githubusercontent.com/sarices/017da597ae6b28063bbdd52693d78385/raw/d2ea246002a94e5ad7486ec96586c6e63500330e/ai.list"
     interval: 86400
 
 rules:
+# -------------------------- AI --------------------------
+- RULE-SET,ai,🌐 AI
+- RULE-SET,my_ai,🌐 AI
+# -------------------------- custom rules --------------------------
+#- RULE-SET,us_rules,🇺🇸 US
+- RULE-SET,ruleset,🚀 自动选择
 #--------------------------- direct ---------------------------
 - GEOIP,CN,DIRECT
-- GEOIP, CN, DIRECT
 - DOMAIN-SUFFIX,local,DIRECT
 - IP-CIDR,127.0.0.0/8,DIRECT
 - IP-CIDR,172.16.0.0/12,DIRECT
@@ -382,12 +388,6 @@ rules:
 - DOMAIN-SUFFIX,zte.home,DIRECT
 - RULE-SET,applications,DIRECT
 - RULE-SET,private,DIRECT
-# -------------------------- AI --------------------------
-- RULE-SET,ai,🇺🇸 US
-- RULE-SET,chatgpt,🇺🇸 US
-# -------------------------- custom rules --------------------------
-- RULE-SET,ruleset,🚀 自动选择
-#{{ my_rules.main('🚀 自动选择', '🇺🇸 US', 'DIRECT') | clash }}
 # -------------------------- applications --------------------------
 - RULE-SET,netflix,🚀 自动选择
 - RULE-SET,telegramcidr,🚀 自动选择
