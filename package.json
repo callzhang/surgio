@@ -12,7 +12,7 @@
   "dependencies": {
     "@surgio/gateway": "^2.2.0",
     "@vercel/analytics": "^1.2.2",
-    "surgio": "^3.2.3",
+    "surgio": "^3.10.7",
     "typescript": "^5.0.0"
   },
   "engines": {

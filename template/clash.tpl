@@ -187,6 +187,11 @@ dns:
       - '+.bing.cn'
       - '+.bing.com'
       - '+.openai.com'
+      - +.dingtalk.com
+      - +.alibaba.com
+      - +.alicdn.com
+      - +.aliyun.com
+      - +.dinglicloud.com
   
   # Lookup domains via specific nameservers
   nameserver-policy:
@@ -394,7 +399,7 @@ rules:
 - RULE-SET,tiktok,🇺🇸 US
 # -------------------------- gfwlist --------------------------
 # - RULE-SET,gfwlist,🚀 自动选择
-- RULE-SET,reject,REJECT
+# - RULE-SET,reject,REJECT
 - RULE-SET,gfw,🚀 自动选择
 
 # Final
