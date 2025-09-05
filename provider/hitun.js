@@ -2,7 +2,7 @@
 const { utils } = require('surgio');
 
 module.exports = {
-  url: 'https://rss0814-main.rss-node.com/link/1axJAyPFMNbFhW40?mu=1',
+  url: 'https://rss0814-main.rss-node.com/link/1axJAyPFMNbFhW40?mu=1&clash=1',
   type: 'clash',
   // 定义所有的节点都支持 udpRelay
   udpRelay: true,
