@@ -1,0 +1,21 @@
+[build]
+  command = "exit 0"
+  functions = "netlify/functions"
+  publish = "."
+
+[functions]
+  included_files = [
+    "node_modules/surgio/**",
+    "node_modules/@surgio/**",
+    "provider/**",
+    "template/**",
+    "*.js",
+    "*.json",
+    "surgio/**"
+  ]
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/index"
+  status = 200
+  force = true

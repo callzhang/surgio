@@ -1,17 +1,21 @@
 {
-  "name": "my-rule-store",
+  "name": "my_surguo",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "update": "surgio generate && surgio upload"
-  },
-  "engines": {
-    "node": ">=12"
+    "update": "surgio generate && surgio upload",
+    "start": "node server.js",
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write .",
+    "build": "npm install"
   },
   "dependencies": {
-    "@surgio/gateway": "^1.8.1",
-    "surgio": "^2.25.0",
-    "to": "^0.2.9",
-    "update": "^0.7.4"
+    "@surgio/gateway": "^2.2.0",
+    "@vercel/analytics": "^1.2.2",
+    "surgio": "^3.10.7",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
