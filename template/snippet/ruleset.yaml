@@ -6,10 +6,9 @@ payload:
   - DOMAIN-SUFFIX,duckduckgo.com
   - DOMAIN-SUFFIX,medium.com
   - DOMAIN-SUFFIX,discord.com
-# US rules
-  - DOMAIN-SUFFIX,linkedin.com
-  - DOMAIN-SUFFIX,reddit.com
-  - DOMAIN-SUFFIX,luminarypodcasts.com
+  - DOMAIN-SUFFIX,remotasks.com
+  - DOMAIN-SUFFIX,blynk.cloud
+
 # Derek's Rules
   - DOMAIN-SUFFIX,notion.so
   - DOMAIN-SUFFIX,dler.cloud

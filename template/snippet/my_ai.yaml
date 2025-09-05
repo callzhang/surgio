@@ -3,7 +3,7 @@ payload:
   - PROCESS-NAME,ChatGPT
   - PROCESS-NAME,poe
   - PROCESS-NAME,Claude
-# Gemini&Bard
+# Google
   - DOMAIN,ai.google.dev
   - DOMAIN,alkalimakersuite-pa.clients6.google.com
   - DOMAIN,generativelanguage.googleapis.com
@@ -18,6 +18,8 @@ payload:
   - DOMAIN-SUFFIX,gemini.google.com
   - DOMAIN-SUFFIX,generativeai.google
   - DOMAIN-SUFFIX,proactivebackend-pa.googleapis.com
+  - DOMAIN-SUFFIX,c.gle
+  - DOMAIN-SUFFIX,g.co
 # claude
   - DOMAIN,cdn.usefathom.com
   - DOMAIN-SUFFIX,anthropic.com

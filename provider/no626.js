@@ -2,7 +2,7 @@
 const { utils } = require('surgio');
 // https://www.no626.online/
 module.exports = {
-  url: 'https://sub.no626.link/api/v1/client/subscribe?token=e149d70fc20d1610bae5d2000dae237b',
+  url: 'https://ul8knn76p9j0.no626.link/api/v1/client/subscribe?token=e149d70fc20d1610bae5d2000dae237b',
   type: 'clash',
   // 定义所有的节点都支持 udpRelay
   udpRelay: true,

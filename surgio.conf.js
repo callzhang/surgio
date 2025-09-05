@@ -20,11 +20,11 @@ module.exports = {
     //   url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
     //   // url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
     // },
-    {
-      url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
-      name: 'apple', // 模板中对应 remoteSnippets.apple
-      surgioSnippet: true
-    },
+    // {
+    //   url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
+    //   name: 'apple', // 模板中对应 remoteSnippets.apple
+    //   surgioSnippet: true
+    // },
   ],
 
   customFilters: {

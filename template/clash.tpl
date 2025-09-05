@@ -214,13 +214,13 @@ proxy-groups:
 - type: url-test
   name: 🌐 AI # 针对封锁亚洲的情况
   proxies: [🇺🇸 US, 🌏 World]
-  url: https://chat.openai.com/
+  url: https://chat.openai.com/cdn-cgi/trace
   interval: 600
   tolerance: 100
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
-  url: {{ proxyTestUrl }}
+  url: https://www.hulu.com/
   interval: 36000
   tolerance: 50
 - type: url-test
@@ -335,9 +335,10 @@ rule-providers: # ClashX Premium features
     interval: 86400
   netflix:
     type: http
-    behavior: domain
-    url: "https://cdn.jsdelivr.net/gh/snapei/clash-pro-rules@release/netflix.txt"
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml"
     path: ./ruleset/netflix.yaml
+    interval: 86400
   tiktok:
     type: http
     behavior: domain
@@ -360,7 +361,7 @@ rules:
 - RULE-SET,ai,🌐 AI
 - RULE-SET,my_ai,🌐 AI
 # -------------------------- custom rules --------------------------
-#- RULE-SET,us_rules,🇺🇸 US
+- RULE-SET,us_rules,🇺🇸 US
 - RULE-SET,ruleset,🚀 自动选择
 #--------------------------- direct ---------------------------
 - GEOIP,CN,DIRECT
