@@ -1,0 +1,36 @@
+name: Scheduled Surgio
+
+# Run daily at 02:00 UTC (change as needed)
+on:
+  schedule:
+    - cron: "0 2 * * *"
+
+jobs:
+  run-surgio:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm install -g surgio
+
+      - name: Run Surgio
+        env:
+          AK: ${{ secrets.AK }}
+          SK: ${{ secrets.SK }}
+          REDIS_URL: ${{ secrets.REDIS_URL }}
+          SURGIO_NETWORK_TIMEOUT: 30000
+          SURGIO_NETWORK_RETRY: 3
+          NODE_OPTIONS: '--no-warnings'
+        run: |
+          set -e
+          set -o pipefail
+          npx surgio generate
+          npx surgio upload
