@@ -9,6 +9,7 @@ on:
 jobs:
   run-surgio:
     runs-on: ubuntu-latest
+    environment: prod  # 使用 prod 环境
 
     steps:
       - name: Checkout repository
@@ -23,6 +24,16 @@ jobs:
         run: |
           npm install surgio --save
           npm install
+
+      - name: Debug environment variables
+        env:
+          AK: ${{ secrets.AK }}
+          SK: ${{ secrets.SK }}
+        run: |
+          echo "AK is set: $([ -n "$AK" ] && echo "YES" || echo "NO")"
+          echo "SK is set: $([ -n "$SK" ] && echo "YES" || echo "NO")"
+          echo "AK length: ${#AK}"
+          echo "SK length: ${#SK}"
 
       - name: Run Surgio
         env:
