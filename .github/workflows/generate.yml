@@ -3,7 +3,8 @@ name: Scheduled Surgio
 # Run daily at 02:00 UTC (change as needed)
 on:
   schedule:
-    - cron: "0 2 * * *"
+    - cron: "0 2 * * *"  # Runs daily at 02:00 UTC
+  workflow_dispatch:      # Enables manual run
 
 jobs:
   run-surgio:
