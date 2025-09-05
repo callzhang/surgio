@@ -19,9 +19,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm install -g surgio
-
       - name: Run Surgio
         env:
           AK: ${{ secrets.AK }}
