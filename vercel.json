@@ -9,6 +9,7 @@
         "includeFiles": [
           "provider/**",
           "template/**",
+          "node_modules/@surgio/gateway-frontend/**",
           "*.js",
           "*.json"
         ]
@@ -20,5 +21,9 @@
       "src": "/(.*)",
       "dest": "/gateway.js"
     }
-  ]
+  ],
+  "env": {
+    "SURGIO_NETWORK_RETRY": "2",
+    "SURGIO_NETWORK_TIMEOUT": "30000"
+  }
 }

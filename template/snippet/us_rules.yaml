@@ -1,0 +1,22 @@
+payload:
+  - DOMAIN-SUFFIX,linkedin.com
+  - DOMAIN-SUFFIX,reddit.com
+  - DOMAIN-SUFFIX,luminarypodcasts.com
+  - DOMAIN-SUFFIX,zillow.com
+  - DOMAIN-SUFFIX,valic.com
+  - DOMAIN-SUFFIX,appdynamics.com
+  - DOMAIN-SUFFIX,corebridgefinancial.com
+  - DOMAIN-SUFFIX,cloudflare.com
+  - DOMAIN-SUFFIX,imperva.com
+  - DOMAIN-SUFFIX,aig.com
+  - DOMAIN-SUFFIX,aigretirement.com
+  - DOMAIN-SUFFIX,okta.com
+  - DOMAIN-SUFFIX,oktacdn.com
+  - DOMAIN-SUFFIX,auth0.com
+  - DOMAIN-SUFFIX,pingidentity.com
+  - DOMAIN-SUFFIX,puritan.com
+  - DOMAIN-SUFFIX,openai.com
+  - DOMAIN-SUFFIX,coinbase.com
+  - DOMAIN-SUFFIX,remotasks.com
+  - DOMAIN-SUFFIX,microsoftonline.com
+  - DOMAIN-SUFFIX,reddit.com

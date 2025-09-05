@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "public": false,
+  "functions": {
+    "api/gateway.js": {
+      "memory": 1024,
+      "maxDuration": 10,
+      "includeFiles": "(provider/**)|(template/**)|(node_modules/surgio/**)|(node_modules/@surgio/**)|(node_modules/@vercel/analytics/**)|(node_modules/compare-versions/**)|(*.js)|(*.json)"
+    }
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/api/gateway.js"
+    }
+  ],
+  "env": {
+    "SURGIO_NETWORK_RETRY": "2",
+    "SURGIO_NETWORK_TIMEOUT": "30000"
+  }
+}

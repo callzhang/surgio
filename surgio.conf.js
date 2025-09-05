@@ -4,62 +4,38 @@ const { utils } = require('surgio');
 
 
 // const uuid = require('crypto').randomUUID();
-const uuid = 'cd14ef8e-be91-487d-801e-aa6df828cc7a';
+const uuid = '5b4d987c-4766-41b5-a87a-a6fbb4ea3e4d';
 
 /**
  * 使用文档：https://surgio.royli.dev/
  */
 module.exports = {
-  /**
-   * 远程片段
-   * 文档：https://surgio.royli.dev/guide/custom-config.html#remotesnippets
-   */
+  // cache: {
+  //   type: 'redis',
+  //   redisUrl: process.env.REDIS_URL,
+  // },
   remoteSnippets: [
-    {
-      name: 'gfwlist',
-      // url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
-      url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
-    },
-    {
-      url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
-      name: 'apple', // 模板中对应 remoteSnippets.apple
-      surgioSnippet: true
-    },
-    {
-      name: 'cn', //比较精简的代理列表，包含常用的，以及被污染的域名
-      url: 'https://raw.githubusercontent.com/Hackl0us/SS-Rule-Snippet/main/Rulesets/Clash/Basic/CN.yaml'
-    },
-    {
-      name: 'telegram', // 模板中对应 remoteSnippets.telegram
-      // url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Telegram.list'
-      url: 'https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt'
-    },
-    {
-      name: 'netflix', // 模板中对应 remoteSnippets.netflix
-      url: 'https://raw.githubusercontent.com/Blankwonder/surge-list/master/netflix.list'
-    },
     // {
-    //   name: 'hbo', // 模板中对应 remoteSnippets.hbo
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/HBO.list'
+    //   name: 'gfwlist',
+    //   url: 'https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/'
+    //   // url: 'https://cdn.jsdelivr.net/gh/Loyalsoldier/surge-rules@release/gfw.txt'
     // },
     // {
-    //   name: 'hulu', // 模板中对应 remoteSnippets.hulu
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/Media/Hulu.list'
+    //   url: 'https://raw.githubusercontent.com/geekdada/surge-list/master/surgio-snippet/apple.tpl',
+    //   name: 'apple', // 模板中对应 remoteSnippets.apple
+    //   surgioSnippet: true
     // },
-    // {
-    //   name: 'paypal', // 模板中对应 remoteSnippets.paypal
-    //   url: 'https://raw.githubusercontent.com/ConnersHua/Profiles/master/Surge/Ruleset/PayPal.list',
-    // }
   ],
-  
+
   customFilters: {
-    // hktFilter: utils.useKeywords(['hkt', 'HKT']),
-    UKFilter: nodeConfig => nodeConfig.nodeName.includes('英国'),
-    INDFilter: nodeConfig => nodeConfig.nodeName.includes('印度'),
-    RSFilter: nodeConfig => nodeConfig.nodeName.includes('俄罗斯'),
-    CAFilter: nodeConfig => nodeConfig.nodeName.includes('加拿大'),
-    GEFilter: utils.useKeywords(['德国']),
-    FreeFilter: utils.useKeywords(['免费', 'Free', '应急']),
+    asianFilter: utils.useKeywords(['印度', 'Indian', '菲律宾', '越南', '马来西亚',]),
+    rowFilter: utils.useKeywords(['英国', '加拿大', '德国', '阿根廷', '土耳其', '澳大利亚', '法国', '乌克兰', '澳洲', '荷兰', '西班牙']),
+    RSFilter: utils.useKeywords(['俄罗斯', 'RS']),
+    HKFilter: utils.mergeFilters([utils.useKeywords(['香港', 'HK']), utils.discardKeywords(['免费', '游戏', ' 遊戲', 'Game', '测试'], false)], true),
+    JPFilter: utils.mergeFilters([utils.useKeywords(['日本', 'JP']), utils.discardKeywords(['免费', '游戏', ' 遊戲', 'Game', '测试'], false)], true),
+    otherFilter: utils.useKeywords(['免费', 'Free', '应急', '剩余', '游戏']),
+    ikuuuFilter: utils.useKeywords(['ikuuu']),
+    hitunFilter: utils.useKeywords(['hitun']),
   },
 
   artifacts: [
@@ -70,67 +46,18 @@ module.exports = {
       name: `stardust_${uuid}.yaml`,
       template: 'clash',
       provider: 'hitun',
-      combineProviders: ['stardust', 'ikuuu'],
+      combineProviders: ['stardust', 'ikuuu', 'no626'],
       customParams: {
         dns: true,
       }
     },
-
-    /**
-     * Quantumult
-     */
-    // {
-    //   name: 'Quantumult_rules.conf',
-    //   template: 'quantumult_rules',
-    //   provider: 'subscribe_demo',
-    // },
-    // {
-    //   name: 'Quantumult.conf',
-    //   template: 'quantumult',
-    //   provider: 'subscribe_demo',
-    // },
-    // {
-    //   // 给 Quantumult 提供订阅地址
-    //   name: 'Shadowsocks_subscribe.conf',
-    //   template: 'shadowsocks_subscribe',
-    //   provider: 'subscribe_demo',
-    // },
-
-    /**
-     * Quantumult X
-     */
-    // {
-    //   name: 'QuantumultX_rules.conf',
-    //   template: 'quantumultx_rules',
-    //   provider: 'demo',
-    // },
-    // {
-    //   name: 'QuantumultX.conf',
-    //   template: 'quantumultx',
-    //   provider: 'demo',
-    // },
-    // {
-    //   name: 'QuantumultX_subscribe_us.conf',
-    //   template: 'quantumultx_subscribe',
-    //   provider: 'demo',
-    //   customParams: {
-    //     magicVariable: utils.usFilter,
-    //   },
-    // },
-    // {
-    //   name: 'QuantumultX_subscribe_hk.conf',
-    //   template: 'quantumultx_subscribe',
-    //   provider: 'demo',
-    //   customParams: {
-    //     magicVariable: utils.hkFilter,
-    //   },
-    // },
   ],
   /**
    * 订阅地址的前缀部分，以 / 结尾
    * 例如阿里云 OSS 的访问地址 https://xxx.oss-cn-hangzhou.aliyuncs.com/
    */
-  urlBase: 'https://surgio-sandy.vercel.app/get-artifact/',
+  // urlBase: 'https://surgio-sandy.vercel.app/get-artifact/',
+  urlBase: 'https://surgio.netlify.app/get-artifact/',
   surgeConfig: {
     v2ray: 'native',
   },
@@ -146,8 +73,8 @@ module.exports = {
     // 支持所有区域
     region: 'oss-cn-hangzhou',
     // 以下信息于阿里云控制台获得
-    accessKeyId: 'LTAIqeJAXS20WLqx',
-    accessKeySecret: 'dRlDUEdcWmFnsf4RkBoBujj2tIGyno',
+    accessKeyId: process.env.AK,
+    accessKeySecret: process.env.SK,
   },
   // 非常有限的报错信息收集
   analytics: true,

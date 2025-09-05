@@ -1,17 +1,10 @@
-{% import './snippet/my_rules.tpl' as my_rules %}
-{% import './snippet/direct_rules.tpl' as direct_rules %}
-{% import './snippet/apple_rules.tpl' as apple_rules %}
-{% import './snippet/youtube_rules.tpl' as youtube_rules %}
-{% import './snippet/us_rules.tpl' as us_rules %}
-{% import './snippet/blocked_rules.tpl' as blocked_rules %}
-
 # {{ downloadUrl }}
 
 # Port of HTTP(S) proxy server on the local end
 port: 7890
 
 # Port of SOCKS5 proxy server on the local end
-socks-port: 7891
+# socks-port: 7891
 
 # Transparent proxy server port for Linux and macOS (Redirect TCP and TProxy UDP)
 redir-port: 7892
@@ -45,7 +38,7 @@ mode: rule
 
 # Clash by default prints logs to STDOUT
 # info / warning / error / debug / silent
-log-level: info
+log-level: warning
 
 # When set to false, resolver won't translate hostnames to IPv6 addresses
 ipv6: true
@@ -64,7 +57,7 @@ external-controller: 127.0.0.1:9090
 # secret: ""
 
 # fwmark on Linux only
-routing-mark: 6666
+# routing-mark: 6666
 
 # Static hosts for DNS server and connection establishment (like /etc/hosts)
 #
@@ -90,6 +83,19 @@ profile:
 cfw-tray-icon: 
   default: https://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/icon_bw.ico          # 默认图标
   system-proxy-on: https://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/icon.ico   # 开启系统代理后图标
+
+tun:
+  enable: true
+  stack: system # or gvisor (for windows)
+  # dns-hijack: # DNS hijacking might result in a failure, if the system DNS is at a private IP address (since auto-route does not capture private network traffic).
+  #   - 8.8.8.8:53
+  #   - tcp://8.8.8.8:53
+  #   - any:53
+  #   - tcp://any:53
+  #   - 198.18.0.2:53 # for Windows, when `fake-ip-range` is 198.18.0.1/16, should hijack 198.18.0.2:53
+  auto-route: true # manage `ip route` and `ip rules`
+  auto-redir: true # manage nftable REDIRECT
+  auto-detect-interface: true # conflict with `interface-name`
 
 {% if customParams.dns %}
 # 1. clash DNS 请求逻辑：
@@ -181,6 +187,11 @@ dns:
       - '+.bing.cn'
       - '+.bing.com'
       - '+.openai.com'
+      - +.dingtalk.com
+      - +.alibaba.com
+      - +.alicdn.com
+      - +.aliyun.com
+      - +.dinglicloud.com
   
   # Lookup domains via specific nameservers
   nameserver-policy:
@@ -196,27 +207,27 @@ proxies:
 proxy-groups:
 - type: url-test
   name: 🚀 自动选择 # 选择最快的代理组
-  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇮🇳 印度, 🇨🇦 CA, 📌 Free]
+  proxies: [🇭🇰 HK, 🇸🇬 SG, 🇯🇵 JP, 🇰🇷 KR, 🇨🇳 TW, 🇺🇸 US, 🌏 World]
   url: {{ proxyTestUrl }}
-  interval: 60
+  interval: 600
   tolerance: 50
 - type: url-test
-  name: 🌐 非亚洲 # 针对封锁亚洲的情况
-  proxies: [🇺🇸 US, 🇬🇧 英国, 🇷🇺 俄罗斯, 🇨🇦 CA, 🇯🇵 JP]
-  url: {{ proxyTestUrl }}
-  interval: 3600
+  name: 🌐 AI # 针对封锁亚洲的情况
+  proxies: [🇺🇸 US, 🌏 World]
+  url: https://chat.openai.com/cdn-cgi/trace
+  interval: 600
   tolerance: 100
 - type: url-test
   name: 🇺🇸 US
   proxies: {{ getClashNodeNames(nodeList, usFilter) | json }}
-  url: {{ proxyTestUrl }}
+  url: https://www.hulu.com/
   interval: 36000
   tolerance: 50
 - type: url-test
   name: 🇭🇰 HK
-  proxies: {{ getClashNodeNames(nodeList, hkFilter) | json }}
+  proxies: {{ getClashNodeNames(nodeList, customFilters.HKFilter) | json }}
   url: {{ proxyTestUrl }}
-  interval: 3600
+  interval: 600
   tolerance: 50
 - type: url-test
   name: 🇸🇬 SG
@@ -226,7 +237,7 @@ proxy-groups:
   tolerance: 100
 - type: url-test
   name: 🇯🇵 JP
-  proxies: {{ getClashNodeNames(nodeList, japanFilter) | json }}
+  proxies: {{ getClashNodeNames(nodeList, customFilters.JPFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
   tolerance: 100
@@ -243,23 +254,8 @@ proxy-groups:
   interval: 3600
   tolerance: 100
 - type: url-test
-  name: 🇬🇧 英国
-  proxies: {{ getClashNodeNames(nodeList, customFilters.UKFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
-- type: url-test
-  name: 🇷🇺 俄罗斯
-  proxies: {{ getClashNodeNames(nodeList, customFilters.RSFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
-- type: url-test
-  name: 🇮🇳 印度
-  proxies: {{ getClashNodeNames(nodeList, customFilters.INDFilter) | json }}
-  url: {{ proxyTestUrl }}
-  interval: 36000
-- type: url-test
-  name: 🇨🇦 CA
-  proxies: {{ getClashNodeNames(nodeList, customFilters.CAFilter) | json }}
+  name: 🇮🇳 亚洲
+  proxies: {{ getClashNodeNames(nodeList, customFilters.asianFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 36000
 - type: select
@@ -268,45 +264,144 @@ proxy-groups:
     - DIRECT
     - 🚀 自动选择
 - type: url-test
-  name: 🎬 Netflix
-  proxies: {{ getClashNodeNames(nodeList, netflixFilter) | json }}
+  name: 🌏 World
+  proxies: {{ getClashNodeNames(nodeList, customFilters.rowFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
 - type: url-test
-  name: 📌 Free
-  proxies: {{ getClashNodeNames(nodeList, customFilters.FreeFilter) | json }}
+  name: 📌 其他
+  proxies: {{ getClashNodeNames(nodeList, customFilters.otherFilter) | json }}
   url: {{ proxyTestUrl }}
   interval: 3600
 
 rule-providers: # ClashX Premium features
-  derek:
-    behavior: "domain"
+  my_ai:
+    behavior: "classical" # domain, ipcidr or classical
     type: http
-    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/derek.yaml"
+    format: yaml
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/my_ai.yaml"
     interval: 3600
-    path: ./derek.yaml
+    path: ./ruleset/my_ai.yaml
+  ruleset:
+    behavior: "classical"
+    type: http
+    format: yaml
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/ruleset.yaml"
+    interval: 3600
+    path: ./ruleset/ruleset.yaml
+  us_rules:
+    behavior: "classical"
+    type: http
+    format: yaml
+    url: "http://stardust-public.oss-cn-hangzhou.aliyuncs.com/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/rss/us_rules.yaml"
+    interval: 3600
+    path: ./ruleset/us_rules.yaml
+  gfwlist:
+    behavior: "classical"
+    type: http
+    format: text
+    url: https://1521335688226052.cn-hongkong.fc.aliyuncs.com/2016-08-15/proxy/tools/gfwlist/
+    interval: 3600000
+    path: ./ruleset/gfwlist.txt
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+  gfw:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+    path: ./ruleset/gfw.yaml
+    interval: 86400
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+  netflix:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Netflix/Netflix_Classical.yaml"
+    path: ./ruleset/netflix.yaml
+    interval: 86400
+  tiktok:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/snapei/clash-pro-rules@release/tiktok.txt"
+    path: ./ruleset/tiktok.yaml
+    interval: 86400
+  ai:
+    type: http
+    behavior: domain
+    #format: mrs
+    format: text
+    #path: ./ruleset/ai.mrs
+    #url: "https://github.com/DustinWin/ruleset_geodata/releases/download/mihomo-ruleset/ai.mrs"
+    path: ./ruleset/ai.list
+    url: "https://gist.githubusercontent.com/sarices/017da597ae6b28063bbdd52693d78385/raw/d2ea246002a94e5ad7486ec96586c6e63500330e/ai.list"
+    interval: 86400
 
 rules:
-- RULE-SET,derek,🌐 非亚洲
-{{ my_rules.main('🚀 自动选择', '🇺🇸 US') | clash }}
-{{ remoteSnippets.cn.main('DIRECT') | clash}}
+# -------------------------- AI --------------------------
+- RULE-SET,ai,🌐 AI
+- RULE-SET,my_ai,🌐 AI
+# -------------------------- custom rules --------------------------
+- RULE-SET,us_rules,🇺🇸 US
+- RULE-SET,ruleset,🚀 自动选择
+#--------------------------- direct ---------------------------
 - GEOIP,CN,DIRECT
-{{ direct_rules.main('DIRECT') | clash }}
-{{ remoteSnippets.apple.main('🚀 自动选择', '🍎 Apple', '🍎 Apple', 'DIRECT', '🇺🇸 US') | clash}}
-{{ remoteSnippets.netflix.main('🎬 Netflix') | clash}}
-{{ youtube_rules.main('🚀 自动选择') | clash }}
-{{ us_rules.main('🇺🇸 US') | clash }}
-{{ blocked_rules.main('🚀 自动选择') | clash }}
-{{ remoteSnippets.telegram.main('🚀 自动选择') | clash }}
-{{ remoteSnippets.gfwlist.main('🚀 自动选择') | clash }}
-
-# LAN
 - DOMAIN-SUFFIX,local,DIRECT
 - IP-CIDR,127.0.0.0/8,DIRECT
 - IP-CIDR,172.16.0.0/12,DIRECT
 - IP-CIDR,192.168.0.0/16,DIRECT
 - IP-CIDR,10.0.0.0/8,DIRECT
 - IP-CIDR,100.64.0.0/10,DIRECT
+- IP-CIDR6,::1/128,DIRECT
+- IP-CIDR6,fc00::/7,DIRECT
+- IP-CIDR6,fe80::/10,DIRECT
+- IP-CIDR6,fd00::/8,DIRECT
+- DOMAIN-SUFFIX,asus.com, DIRECT
+- DOMAIN-SUFFIX,acl4ssr,DIRECT
+- DOMAIN-SUFFIX,ip6-localhost,DIRECT
+- DOMAIN-SUFFIX,ip6-loopback,DIRECT
+- DOMAIN-SUFFIX,local,DIRECT
+- DOMAIN-SUFFIX,localhost,DIRECT
+- DOMAIN,router.asus.com,DIRECT
+- DOMAIN-SUFFIX,hiwifi.com,DIRECT
+- DOMAIN-SUFFIX,leike.cc,DIRECT
+- DOMAIN-SUFFIX,miwifi.com,DIRECT
+- DOMAIN-SUFFIX,my.router,DIRECT
+- DOMAIN-SUFFIX,p.to,DIRECT
+- DOMAIN-SUFFIX,peiluyou.com,DIRECT
+- DOMAIN-SUFFIX,phicomm.me,DIRECT
+- DOMAIN-SUFFIX,routerlogin.com,DIRECT
+- DOMAIN-SUFFIX,tendawifi.com,DIRECT
+- DOMAIN-SUFFIX,zte.home,DIRECT
+- RULE-SET,applications,DIRECT
+- RULE-SET,private,DIRECT
+# -------------------------- applications --------------------------
+- RULE-SET,netflix,🚀 自动选择
+- RULE-SET,telegramcidr,🚀 自动选择
+- RULE-SET,tiktok,🇺🇸 US
+# -------------------------- gfwlist --------------------------
+# - RULE-SET,gfwlist,🚀 自动选择
+# - RULE-SET,reject,REJECT
+- RULE-SET,gfw,🚀 自动选择
 
 # Final
 - MATCH,DIRECT
